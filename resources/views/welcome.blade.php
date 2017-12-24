@@ -115,7 +115,7 @@
 
 @yield('content')
 
-{{--@include('content.content')--}}
+@include('content.content')
 
     <hr>
 

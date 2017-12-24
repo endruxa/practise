@@ -1,47 +1,37 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <title>@yield('title')Blog</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-    <link href='{{asset('vendor/https/family-lora.css')}}' rel='stylesheet' type='text/css'>
-    <link href='{{asset('vendor/https/family-open.css')}}' rel='stylesheet' type='text/css'>
-
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-
 <body>
+<div id="app">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
 
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="#">Admin</a>
-        </div>
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+            </div>
 
         <!-- Admin menu -->
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -50,7 +40,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                        role="button" aria-expanded="false">Блог</a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Категории</a> </li>
+                        <li><a href="{{route('admin.category.index')}}">Категории</a> </li>
                         <li><a href="#">Материалы</a> </li>
                     </ul>
                 </li>
@@ -82,7 +72,7 @@
                                 </li>
                             </ul>
                         </li>
-                        @endguest
+                @endguest
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -90,33 +80,11 @@
     <!-- /.container -->
 </nav>
 
-<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-
-<header class="intro-header" style="background-image: url('{{asset('img/home-bg.jpg')}}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Clean Blog</h1>
-                    <hr class="small">
-                    <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
 <!-- Main Content -->
 
 @yield('content')
 
-{{--@include('content.content')--}}
-
 <hr>
-
-<!-- Footer -->
-@include('layouts._footer')
 
 <!-- jQuery -->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -131,6 +99,8 @@
 <!-- Theme JavaScript -->
 <script src="{{asset('js/clean-blog.min.js')}}"></script>
 
+<!-- Footer -->
+@include('layouts._footer')
 </body>
 
 </html>
