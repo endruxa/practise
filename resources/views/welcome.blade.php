@@ -44,7 +44,7 @@
             </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-auto">
                 <li>
                     <a href="index.html">Home</a>
@@ -87,8 +87,8 @@
                             </ul>
                         </li>
                         @endguest
-            </ul>
-            </div>
+                    </ul>
+                </div>
         <!-- /.navbar-collapse -->
         </div>
     <!-- /.container -->
@@ -115,47 +115,12 @@
 
 @yield('content')
 
-@include('content.content')
+{{--@include('content.content')--}}
 
     <hr>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website {{date("Y-m-d")}}</p>
-                </div>
-            </div>
-        </div>
-
-    </footer>
+@include('layouts._footer')
 
     <!-- jQuery -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>

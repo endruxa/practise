@@ -57,6 +57,7 @@
             "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
+
     },
     "config": {
         "preferred-install": "dist",
