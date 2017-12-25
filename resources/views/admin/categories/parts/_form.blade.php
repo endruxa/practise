@@ -21,10 +21,10 @@ value="{{$category->slug or ""}}" readonly="">
 <label for="">Родительская категория</label>
 <select class="form-control" name="parent_id">
     <option value="0">-- без родительской категории --</option>
-@include('admin.categories.parts.categories', ['categories' => $categories])
+@include('admin.categories.parts._categories', ['categories' => $categories])
 
 </select>
 
-<hr>
+<hr />
 
 <input class="btn btn-primary" type="submit" value="Сохранить">

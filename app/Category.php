@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class Category extends Model
 {
-    //Mass asigned
+    //Mass assigned
     protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
     //Mutators

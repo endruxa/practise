@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Blog') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 </head>
+
 <body>
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
@@ -27,10 +30,6 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
             </div>
 
         <!-- Admin menu -->
@@ -86,21 +85,12 @@
 
 <hr>
 
-<!-- jQuery -->
-<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
-<!-- Contact Form JavaScript -->
-<script src="{{asset('js/jqBootstrapValidation.js')}}"></script>
-<script src="{{asset('js/contact_me.js')}}"></script>
-
-<!-- Theme JavaScript -->
-<script src="{{asset('js/clean-blog.min.js')}}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 
 <!-- Footer -->
 @include('layouts._footer')
-</body>
 
+</div>
+</body>
 </html>

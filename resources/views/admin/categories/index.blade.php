@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    @component('admin.components.breadcrumb')
+    @component('admin.components._breadcrumb')
 
     @slot('title') Список категорий @endslot
     @slot('parent') Главная @endslot
@@ -23,12 +23,11 @@
         </thead>
         <tbody>
         @forelse($categories as $category)
-
         <tr>
             <td>{{$category->title}}</td>
             <td>{{$category->published}}</td>
             <td>
-                <a href="{{route('admin.category.edit', ['id' =>$category->id])}}"><i class="fa fa-edit"></i></a>
+                <a href="{{route('admin.category.edit', $category)}}"><i class="fa fa-edit"></i></a>
             </td>
         </tr>
         @empty
@@ -47,7 +46,6 @@
         </tr>
         </tfoot>
     </table>
-
 </div>
 
 @endsection

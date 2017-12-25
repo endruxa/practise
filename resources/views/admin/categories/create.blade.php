@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    @component('admin.components.breadcrumb')
+    @component('admin.components._breadcrumb')
 
         @slot('title') Создание категории @endslot
         @slot('parent') Главная @endslot
@@ -17,7 +17,8 @@
     <form class="form-horizontal" action="{{route('admin.category.store')}}" method="post">
     {{csrf_field()}}
 
-    @include('admin.categories.parts.form')
+    {{-- Form include --}}
+    @include('admin.categories.parts._form')
 
     </form>
 
