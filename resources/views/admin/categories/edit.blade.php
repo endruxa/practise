@@ -5,11 +5,9 @@
     <div class="container">
 
         @component('admin.components._breadcrumb')
-
             @slot('title') Редактирование категории @endslot
             @slot('parent') Главная @endslot
             @slot('active') Категории @endslot
-
         @endcomponent
 
         <hr>
@@ -18,10 +16,10 @@
             <input type="hidden" name="_method" value="put">
             {{csrf_field()}}
 
+            {{--Form include--}}
             @include('admin.categories.parts._form')
 
         </form>
-
     </div>
 
 @endsection

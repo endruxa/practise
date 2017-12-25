@@ -8,7 +8,7 @@
         selected= ""
     @endif
     {{--Исключение текущей категории--}}
-    @if ($category->id == $category_list)
+    @if ($category->id == $category_list->id)
         hidden= ""
     @endif
 
