@@ -11,11 +11,6 @@ class Article extends Model
     protected $fillable = ['title', 'slug', 'description_short', 'description', 'image', 'image_show', 'meta_title', 'meta_description',
         'meta_keyword', 'published', 'created_by', 'modified_by'];
 
-    //Polymorphic relation with categories
-    public function categories()
-    {
-        return $this->morphToMany('App\Category', 'categoryable');
-    }
 
     //Mutators
     public function setSlugAttribute($value){
@@ -23,5 +18,21 @@ class Article extends Model
             '-');
     }
 
+    public function setDescriptionAttribute($value){
+        $this->attributes['description'] = strip_tags($value);
+        $this->attributes['description_short'] = strip_tags($value);
 
+    }
+
+
+    //Polymorphic relation with categories
+    public function categories()
+    {
+        return $this->morphToMany('App\Category', 'categoryable');
+    }
+
+    public function scopeLastArticles($query, $count)
+    {
+        return $query->orderBy('created_at', 'desc')->take($count)->get();
+    }
 }
