@@ -20,7 +20,7 @@
 
 <label for="">Родительская категория</label>
 <select class="form-control" name="categories[]" multiple="">
-    @include('admin.articles.parts._categories', ['categories' => $$categories])
+    @include('admin.articles.parts._categories', ['categories' => $categories])
 </select>
 
 <label for="">Краткое описание</label>
