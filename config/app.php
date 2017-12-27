@@ -181,7 +181,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
 
-        //Own Providers
+        //Own providers
         App\Providers\BlogServiceProvider::class,
 
     ],

@@ -11,8 +11,9 @@ class Category extends Model
     //Mass assigned
     protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
+    
     //Mutators
-    public function setSlugAttribute($value){
+    public function setSlugAttribute(){
         $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('dmyHi'),
     '-');
     }
@@ -33,4 +34,6 @@ class Category extends Model
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
+
+
 }
