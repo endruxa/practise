@@ -30,8 +30,8 @@ class BlogServiceProvider extends ServiceProvider
 
     //Menu for users
     public function topMenu(){
-        View::composer('layouts.header.', function ($view){
-            $view->with('categories', Category::where('parent_id', 0)->where('published', 1)->get());
+        View::composer('layouts.header', function ($view){
+           $view->with('categories', Category::where('parent_id', 0)->where('published', 1)->get());
         });
     }
 }

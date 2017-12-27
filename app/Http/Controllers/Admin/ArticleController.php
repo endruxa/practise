@@ -44,6 +44,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $description = $request->get('description');
         $article = Article::create($request->all());
 
         //Categories

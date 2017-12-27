@@ -13,15 +13,16 @@ class Article extends Model
 
 
     //Mutators
-    public function setSlugAttribute($value){
+    public function setSlugAttribute()
+    {
         $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('dmyHi'),
             '-');
     }
 
-    public function setDescriptionAttribute($value){
-        $this->attributes['description'] = strip_tags($value);
-        $this->attributes['description_short'] = strip_tags($value);
 
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description_short'] = strip_tags($value);
     }
 
 
@@ -30,6 +31,7 @@ class Article extends Model
     {
         return $this->morphToMany('App\Category', 'categoryable');
     }
+
 
     public function scopeLastArticles($query, $count)
     {

@@ -4,7 +4,7 @@
         <li class="dropdown">
             <a href="{{url("/practise/category/$category->slug")}}" class="dropdown-toggle"
                data-toggle="dropdown" role="button" aria-expanded="false">
-                {{$category->title}} <span class="caert"></span>
+                {{$category->title}} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
                 @include('layouts.top_menu', ['categories' => $category->children])
