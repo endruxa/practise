@@ -20,7 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/practise/category/{slug?}', 'BlogController@category');
+Route::get('/blog/category/{slug?}', 'BlogController@category')->name('category');
+Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
 
 /*
  * Adminka
