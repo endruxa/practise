@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Http\Controllers\Requests\BlogRequestController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -28,19 +29,18 @@ class CategoryController extends Controller
     public function create()
     {
         return view('admin.categories.create', [
-            'category'   => [],
+            'category'   => collect(),
             'categories' => Category::with('children')->where('parent_id', 0)->get(),
             'delimiter'  => ''
         ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param BlogRequestController $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+
+    public function store(BlogRequestController $request)
     {
         Category::create($request->all());
 
@@ -75,12 +75,11 @@ class CategoryController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param BlogRequestController $request
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(BlogRequestController $request, Category $category)
     {
         $category->update($request->except('slug'));
 

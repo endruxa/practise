@@ -13,6 +13,8 @@
 
 
         <title>@yield('title')Blog</title>
+        <meta name="keywords" content="@yield('meta_keyword')">
+        <meta name="description" content="@yield('description')">
 
         <!-- Bootstrap Core CSS -->
         <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

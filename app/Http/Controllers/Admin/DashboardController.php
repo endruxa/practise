@@ -10,11 +10,13 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     //Dashboard
-    public function dashboard(){
+    public function dashboard($categories, $articles){
+        $categories = Category::whereIn('id', []);
+        $articles = Article::lastArticles('id', []);
 
         return view('admin.dashboard', [
-            'categories' => Category::lastCategories(5),
-            'articles' => Article::lastArticles(5),
+            'categories' => $categories,
+            'articles' => $articles,
             'count_categories' => Category::count(),
             'count_articles' => Article::count()
         ]);
