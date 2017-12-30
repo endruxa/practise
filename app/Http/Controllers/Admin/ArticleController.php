@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Article;
 use App\Category;
+use App\Http\Controllers\Requests\BlogRequestController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +18,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('admin.articles.index', [
-            'articles' => Article::orderBy('created_at', 'desc')->paginate(10)
+            'articles' => Article::orderBy('created_at', 'desc')->paginate(2)
         ]);
     }
 
@@ -26,25 +27,23 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category)
     {
+        $category = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [
-            'article'    => [],
-            'categories' => Category::with('children')->where('parent_id', 0)->get(),
+            'article'    => collect(),
+            'categories' => $category,
             'delimiter'  => ''
 
         ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param BlogRequestController $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(BlogRequestController $request)
     {
-        $description = $request->get('description');
         $article = Article::create($request->all());
 
         //Categories
@@ -75,21 +74,20 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        $category = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.edit', [
             'article'    => $article,
-            'categories' => Category::with('children')->where('parent_id', 0)->get(),
+            'categories' => $category,
             'delimiter'  => ''
         ]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
+     * @param BlogRequestController $request
+     * @param Article $article
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Article $article)
+    public function update(BlogRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
 

@@ -10,22 +10,21 @@ class BlogController extends Controller
 {
     public function category($slug)
     {
-        $category = Category::where('slug', $slug)->first();
+      $category = Category::where('slug', $slug)->first();
 
         return view('blog.category', [
             'category' => $category,
-            'articles' => $category->articles('published', 1)->paginate(12)
+            'articles' => $category->articles('published', 1)->paginate(2)
         ]);
     }
 
     public function article($slug)
     {
-        $articles = Article::where('slug', $slug)->first();
+       $article = Article::where('slug', $slug)->first();
 
-        return view('blog.article', [
-            'articles' => $articles,
-           'category' => $articles->category('published', 1)->paginate(12)
-        ]);
+       return view('blog.article', [
+           'article' => $article
+       ]);
     }
 
 }

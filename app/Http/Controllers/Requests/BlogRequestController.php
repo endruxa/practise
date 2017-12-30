@@ -24,7 +24,7 @@ class BlogRequestController extends FormRequest
             'meta_description' => 'required|min:3',
             'meta_keyword' => 'required|min3'
         ];
-        if ('blog.update' == array_get($this->route()->action, 'as')) {
+        if ('admin.category.update' == array_get($this->route()->action, 'as')) {
             $rules['title'] = 'required|min:3|unique:articles,title,' . $this->article->id;
         }
         return $rules;

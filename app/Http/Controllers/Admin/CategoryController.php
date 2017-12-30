@@ -14,23 +14,26 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
+        $category = Category::paginate(2);
+
         return view('admin.categories.index', [
-            'categories' => Category::paginate(10)
+            'categories' => $category
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param BlogRequestController $category
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(BlogRequestController $category)
     {
+        $category = Category::with('children')->where('parent_id', 0)->get();
+
         return view('admin.categories.create', [
             'category'   => collect(),
-            'categories' => Category::with('children')->where('parent_id', 0)->get(),
+            'categories' => $category,
             'delimiter'  => ''
         ]);
     }
@@ -66,9 +69,10 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.categories.edit', [
             'category'   => $category,
-            'categories' => Category::with('children')->where('parent_id', 0)->get(),
+            'categories' => $categories,
             'delimiter'  => ''
         ]);
     }
