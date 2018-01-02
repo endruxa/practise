@@ -11,7 +11,11 @@ class Category extends Model
     //Mass assigned
     protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
-    
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+    }
+
     //Mutators
     public function setSlugAttribute(){
         $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('dmyHi'),
@@ -27,7 +31,7 @@ class Category extends Model
     //Polymorphic relation with articles
     public function articles()
     {
-        return $this->morphedByMany('App\Article', 'categoryable');
+        return $this->morphToMany('App\Article', 'categoryable');
     }
 
     public function scopeLastCategories($query, $count)

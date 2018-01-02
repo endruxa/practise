@@ -17,8 +17,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $articles = Article::orderBy('created_at', 'desc')->paginate(2);
         return view('admin.articles.index', [
-            'articles' => Article::orderBy('created_at', 'desc')->paginate(2)
+            'articles' => $articles
         ]);
     }
 
@@ -74,10 +75,10 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        $category = Category::with('children')->where('parent_id', 0)->get();
+        $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.edit', [
             'article'    => $article,
-            'categories' => $category,
+            'categories' => $categories,
             'delimiter'  => ''
         ]);
     }

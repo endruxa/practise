@@ -14,20 +14,20 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index()
     {
-        $category = Category::paginate(2);
+        $categories = Category::paginate(2);
 
         return view('admin.categories.index', [
-            'categories' => $category
+            'categories' => $categories
         ]);
+
     }
 
     /**
-     * @param BlogRequestController $category
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(BlogRequestController $category)
+    public function create()
     {
         $category = Category::with('children')->where('parent_id', 0)->get();
 
@@ -39,11 +39,11 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param BlogRequestController $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function store(BlogRequestController $request)
+    public function store(Request $request)
     {
         Category::create($request->all());
 
@@ -78,12 +78,11 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     * @param BlogRequestController $request
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(BlogRequestController $request, Category $category)
+    public function update(Request $request, Category $category)
     {
         $category->update($request->except('slug'));
 
