@@ -26,6 +26,7 @@
         <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
         <link href='{{asset('vendor/https/family-lora.css')}}' rel='stylesheet' type='text/css'>
         <link href='{{asset('vendor/https/family-open.css')}}' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" type="image/png" href="{{ asset('vendor/laravel-filemanager/img/folder.png') }}">
 
     </head>
 

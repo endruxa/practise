@@ -1,6 +1,6 @@
 @extends('welcome')
 
-@section('title', $article->title)
+@section('title', $category->title)
 
 @section('content')
 
@@ -15,7 +15,7 @@
             @empty
             <h2 class="text-center">Пусто</h2>
         @endforelse
-        {{$articles->links()}}
+        {{$articles->render()}}
     </div>
 
 @endsection
