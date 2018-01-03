@@ -41,5 +41,9 @@ class Category extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
+    /*public function user()
+    {
+        return $this->belongsTo(User::class);
+    }*/
 
 }
