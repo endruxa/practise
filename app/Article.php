@@ -20,10 +20,10 @@ class Article extends Model
     }
 
 
-    public function setDescriptionAttribute($value)
+    /*public function setDescriptionAttribute($value)
     {
         $this->attributes['description_short'] = strip_tags($value);
-    }
+    }*/
 
 
     //Polymorphic relation with categories

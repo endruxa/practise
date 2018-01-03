@@ -17,33 +17,30 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'desc')->paginate(2);
         return view('admin.articles.index', [
-            'articles' => $articles
+            'articles' => Article::orderBy('created_at', 'desc')->paginate(2)
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Category $category)
+    public function create()
     {
-        $category = Category::with('children')->where('parent_id', 0)->get();
+
         return view('admin.articles.create', [
-            'article'    => collect(),
-            'categories' => $category,
+            'article'    => [],
+            'categories' => Category::with('children')->where('parent_id', 0)->get(),
             'delimiter'  => ''
 
         ]);
     }
 
     /**
-     * @param BlogRequestController $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(BlogRequestController $request)
+    public function store(Request $request)
     {
         $article = Article::create($request->all());
 
@@ -84,11 +81,11 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param BlogRequestController $request
+     * @param Request $request
      * @param Article $article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(BlogRequestController $request, Article $article)
+    public function update(Request $request, Article $article)
     {
         $article->update($request->except('slug'));
 

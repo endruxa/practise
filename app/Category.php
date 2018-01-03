@@ -11,10 +11,12 @@ class Category extends Model
     //Mass assigned
     protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
     }
+
 
     //Mutators
     public function setSlugAttribute(){
@@ -31,7 +33,7 @@ class Category extends Model
     //Polymorphic relation with articles
     public function articles()
     {
-        return $this->morphToMany('App\Article', 'categoryable');
+        return $this->morphedBYMany('App\Article', 'categoryable');
     }
 
     public function scopeLastCategories($query, $count)
