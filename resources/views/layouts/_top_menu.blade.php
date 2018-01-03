@@ -7,7 +7,7 @@
                 {{$category->title}} <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-                @include('layouts.top_menu', ['categories' => $category->children])
+                @include('layouts._top_menu', ['categories' => $category->children])
             </ul>
             @else
                 <li>

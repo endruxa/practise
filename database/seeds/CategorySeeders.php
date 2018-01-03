@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class CategorySeeders extends Seeder
 {
@@ -28,5 +30,6 @@ class CategorySeeders extends Seeder
         {
             \App\Category::create(['title'=>$tag]);
         }
+
     }
 }
