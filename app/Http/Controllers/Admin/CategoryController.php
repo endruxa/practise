@@ -46,9 +46,6 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-       /*$request->validate([
-            'title' => 'unique:categories|min:3',
-        ]);*/
             Category::create($request->validate([
                 'title' => 'unique:categories|min:3',
             ]));
@@ -91,6 +88,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        /*$request->validate([
+            'title' => 'unique:categories|min:3',
+        ]);*/
         $category->update($request->except('slug'));
 
         return redirect()->route('admin.category.index');
