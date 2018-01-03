@@ -12,7 +12,7 @@
 
 <label for="">Заголовок</label>
 <input type="text" class="form-control" name="title" placeholder="Заголовок новости"
-       value="{{$article->title or ""}}" required>
+       value="{{$article->title or ""}}">
 
 <label for="">Slug (Уникальное значение)</label>
 <input class="form-control" type="text" name="slug" placeholder="Автоматическая генерация "

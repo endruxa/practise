@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('admin.articles.parts._form_errors')
+
 <div class="container">
 
     @component('admin.components._breadcrumb')

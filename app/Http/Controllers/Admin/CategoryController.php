@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
-use App\Http\Controllers\Requests\BlogRequestController;
-use Illuminate\Http\Request;
+use App\Http\Requests\BlogRequestController;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -40,15 +41,21 @@ class CategoryController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return $this
      */
 
     public function store(Request $request)
     {
-        Category::create($request->all());
+       /*$request->validate([
+            'title' => 'unique:categories|min:3',
+        ]);*/
+            Category::create($request->validate([
+                'title' => 'unique:categories|min:3',
+            ]));
 
-        return redirect()->route('admin.category.index');
+            return redirect()->route('admin.category.index');
     }
+
 
     /**
      * Display the specified resource.

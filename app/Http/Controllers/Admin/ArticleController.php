@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Article;
 use App\Category;
-use App\Http\Controllers\Requests\BlogRequestController;
-use Illuminate\Http\Request;
+use App\Http\Requests\BlogRequestController;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -17,8 +17,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $articles = Article::orderBy('created_at', 'desc')->paginate(2);
         return view('admin.articles.index', [
-            'articles' => Article::orderBy('created_at', 'desc')->paginate(2)
+            'articles' => $articles
         ]);
     }
 
@@ -27,20 +28,20 @@ class ArticleController extends Controller
      */
     public function create()
     {
-
+        $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [
-            'article'    => [],
-            'categories' => Category::with('children')->where('parent_id', 0)->get(),
+            'article'    => collect(),
+            'categories' => $categories,
             'delimiter'  => ''
 
         ]);
     }
 
     /**
-     * @param Request $request
+     * @param BlogRequestController $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(BlogRequestController $request)
     {
         $article = Article::create($request->all());
 
@@ -88,8 +89,8 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         $article->update($request->except('slug'));
-
         $article->categories()->detach();
+
         if($request->input('categories')) :
             $article->categories()->attach($request->input('categories'));
         endif;

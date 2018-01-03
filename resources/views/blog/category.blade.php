@@ -15,7 +15,7 @@
             @empty
             <h2 class="text-center">Пусто</h2>
         @endforelse
-        {{$articles->render()}}
+        {{$articles->links()}}
     </div>
 
 @endsection
