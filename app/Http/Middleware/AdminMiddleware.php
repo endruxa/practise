@@ -17,8 +17,10 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         $user = $request->user();
-        if($user && $user->role == User::ROLE_ADMIN)
-        return $next($request);
+        if ($user && $user->role == User::ROLE_ADMIN) {
+            return $next($request);
+        }
+
         abort(403, 'Access denied');
     }
 }
