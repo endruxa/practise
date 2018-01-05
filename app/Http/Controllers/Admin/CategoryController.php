@@ -30,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $category = Category::with('children')->where('parent_id', 0)->get();
+        $category = Category::with('children')->where('parent_id', 1)->get();
 
         return view('admin.categories.create', [
             'category'   => collect(),

@@ -12,16 +12,17 @@ class Category extends Model
     protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
 
-    public function setTitleAttribute($value)
+   /* public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
-    }
-
+    }*/
 
     //Mutators
-    public function setSlugAttribute(){
-        $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('dmyHi'),
-    '-');
+    public function setTitleAttribute($title)
+    {
+        $this->attributes['title'] = $title;
+        $this->attributes['slug'] = str_slug($title);/*Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('d-m-y-H-i'),
+    '-');*/
     }
 
     //Get children category
@@ -33,7 +34,7 @@ class Category extends Model
     //Polymorphic relation with articles
     public function articles()
     {
-        return $this->morphedBYMany('App\Article', 'categoryable');
+        return $this->hasMany(Article::class, 'category_id');
     }
 
     public function scopeLastCategories($query, $count)
@@ -41,9 +42,9 @@ class Category extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    /*public function user()
+    public function user()
     {
         return $this->belongsTo(User::class);
-    }*/
+    }
 
 }

@@ -8,17 +8,19 @@ use Illuminate\Support\Str;
 
 class Article extends Model
 {
-    protected $fillable = ['title', 'slug', 'description_short', 'description', 'image', 'image_show', 'meta_title', 'meta_description',
+    protected $fillable = ['title', 'slug', 'description_short', 'description', 'meta_title', 'meta_description',
         'meta_keyword', 'published', 'created_by', 'modified_by'];
 
 
     //Mutators
-    public function setSlugAttribute()
+    public function setTitleAttribute($title)
     {
-        $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('dmyHi'),
-            '-');
-    }
+        $this->attributes['title'] =$title ;
+        $this->attributes['slug'] =str_slug($title) /*Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('d-m-y-H-i'),
+            '-')*/;
 
+        return $this;
+    }
 
     public function setDescriptionAttribute($value)
     {
@@ -29,7 +31,7 @@ class Article extends Model
     //Polymorphic relation with categories
     public function categories()
     {
-        return $this->morphToMany('App\Category', 'categoryable');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
 
@@ -38,8 +40,8 @@ class Article extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    /*public function user()
+    public function user()
     {
         return $this->belongsTo(User::class);
-    }*/
+    }
 }

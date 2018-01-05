@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container">
-        @forelse($articles as $article )
+        @forelse($categories->articles->where('published')->get() as $article )
         <div class="row">
             <div class="col-sm-12">
                 <h2><a href="{{route('article', $article->slug)}}">{{$article->title}}</a></h2>

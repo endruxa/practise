@@ -23,11 +23,9 @@ class CreateCategoriesTable extends Migration
             $table->integer('modified_by')->nullable();
             $table->timestamps();
             $table->integer('user_id')->unsigned();
+            $table->integer('category_id');
 
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+
         });
     }
 
@@ -38,9 +36,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table){
-            $table->dropForeign(['user_id']);
-        });
         Schema::dropIfExists('categories');
     }
 }
