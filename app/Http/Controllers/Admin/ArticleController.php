@@ -7,6 +7,7 @@ use App\Category;
 use App\Http\Requests\BlogRequestController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class ArticleController extends Controller
 {
@@ -43,12 +44,13 @@ class ArticleController extends Controller
      */
     public function store(BlogRequestController $request)
     {
-        $article = Article::create($request->all());
-
-        //Categories
-
-        if($request->input('categories')) :
-            $article->categories()->attach($request->input('categories'));
+        /*$user_id = $request->user()->getkey('id');
+        $article = Article::create($request->all());*/
+        $article = $request
+            ->user()
+            ->articles()
+            ->create($request->all());
+        if($request->input('categories')) : $article->with('categories')->where($request->input('categories'));
         endif;
 
         return redirect()->route('admin.article.index');

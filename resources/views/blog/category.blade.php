@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container">
-        @forelse($categories->articles->where('published')->get() as $article )
+        @forelse($categories->articles->where('published', 1)->get() as $article )
         <div class="row">
             <div class="col-sm-12">
                 <h2><a href="{{route('article', $article->slug)}}">{{$article->title}}</a></h2>
@@ -15,7 +15,7 @@
             @empty
             <h2 class="text-center">Пусто</h2>
         @endforelse
-        {{$articles->links()}}
+        {{$categories->links()}}
     </div>
 
 @endsection

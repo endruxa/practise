@@ -9,20 +9,14 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
     //Mass assigned
-    protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
+    protected $fillable = ['title', 'parent_id', 'published', 'created_by', 'modified_by'];
 
-
-   /* public function setTitleAttribute($value)
-    {
-        $this->attributes['title'] = $value;
-    }*/
 
     //Mutators
-    public function setTitleAttribute($title)
+    public function setTitleAttribute($value)
     {
-        $this->attributes['title'] = $title;
-        $this->attributes['slug'] = str_slug($title);/*Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('d-m-y-H-i'),
-    '-');*/
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = (str_slug($value). " - " . Carbon::now()->format('d-m-y-H-i'));
     }
 
     //Get children category
@@ -34,7 +28,12 @@ class Category extends Model
     //Polymorphic relation with articles
     public function articles()
     {
-        return $this->hasMany(Article::class, 'category_id');
+        return $this->hasMany(Article::class, 'category_id', 'id');
+    }
+
+    public function getArticlesAttribute()
+    {
+        return $this->articles()->pluck('category_id');
     }
 
     public function scopeLastCategories($query, $count)
@@ -42,9 +41,13 @@ class Category extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    public function user()
+    public function getRouteKeyName()
     {
-        return $this->belongsTo(User::class);
+        return 'slug';
     }
+    /* public function user()
+     {
+         return $this->belongsTo(User::class);
+     }*/
 
 }
