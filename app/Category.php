@@ -28,23 +28,15 @@ class Category extends Model
     //Polymorphic relation with articles
     public function articles()
     {
-        return $this->hasMany(Article::class, 'category_id', 'id');
+        return $this->hasMany(Article::class, 'category_id');
     }
 
-    public function getArticlesAttribute()
-    {
-        return $this->articles()->pluck('category_id');
-    }
 
     public function scopeLastCategories($query, $count)
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
     /* public function user()
      {
          return $this->belongsTo(User::class);

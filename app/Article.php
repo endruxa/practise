@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Article extends Model
 {
     protected $fillable = ['title', 'description_short', 'description', 'meta_title', 'meta_description',
-        'meta_keyword', 'published', 'created_by', 'modified_by', 'user_id'];
+        'meta_keyword', 'published', 'created_by', 'modified_by'];
 
     //Mutators
     public function setTitleAttribute($title)
@@ -30,11 +30,6 @@ class Article extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    public function getCategoriesAttribute()
-    {
-        return $this->categories()->pluck('id');
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'id');
@@ -43,6 +38,6 @@ class Article extends Model
     //Polymorphic relation with categories
     public function categories()
     {
-        return $this->belongsTo(Category::class, 'id', 'category_id');
+        return $this->belongsTo(Category::class, 'id');
     }
 }

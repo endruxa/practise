@@ -44,8 +44,7 @@ class ArticleController extends Controller
      */
     public function store(BlogRequestController $request)
     {
-        /*$user_id = $request->user()->getkey('id');
-        $article = Article::create($request->all());*/
+        /*$article = Article::with('')*/
         $article = $request
             ->user()
             ->articles()
