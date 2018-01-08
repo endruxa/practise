@@ -25,7 +25,7 @@ class Category extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
-    //Polymorphic relation with articles
+    //relation with articles
     public function articles()
     {
         return $this->hasMany(Article::class, 'category_id');

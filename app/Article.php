@@ -25,6 +25,11 @@ class Article extends Model
         $this->attributes['description_short'] = strip_tags($value);
     }
 
+    public function getCategoryIdAttribute()
+    {
+        $this->categories()->pluck('id');
+    }
+
     public function scopeLastArticles($query, $count)
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
@@ -35,7 +40,7 @@ class Article extends Model
         return $this->belongsTo(User::class, 'id');
     }
 
-    //Polymorphic relation with categories
+    //relation with categories
     public function categories()
     {
         return $this->belongsTo(Category::class, 'id');
