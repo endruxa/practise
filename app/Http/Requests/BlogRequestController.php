@@ -28,8 +28,8 @@ class BlogRequestController extends FormRequest
           'description' => 'required',
     'description_short' => 'required|min:5',
            'meta_title' => 'required|min:3',
-     'meta_description' => 'required|min:3'
-         /*'meta_keyword' => 'required'*/
+     'meta_description' => 'required|min:3',
+         'meta_keyword' => 'required|min:3'
             ];
 
         return $rules;

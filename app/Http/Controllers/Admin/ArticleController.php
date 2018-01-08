@@ -44,24 +44,20 @@ class ArticleController extends Controller
      */
     public function store(BlogRequestController $request)
     {
-        $category_id = $request->get('category_id');
-
-        /*try {
-            DB::beginTransaction();*/
+        try {
+            DB::beginTransaction();
 
             $article = $request
                 ->user()
                 ->articles()
                 ->create($request->all());
-            $article->categories()->attach($category_id);
-            /*dd($article);*/
             if ($request->input('categories')) : $article->with('categories')->where($request->input('categories'));
             endif;
 
-            /*DB::commit();
+            DB::commit();
         }catch ( \Exception $e){
             DB::rollBack();
-        }*/
+        }
 
         return redirect()->route('admin.article.index');
     }

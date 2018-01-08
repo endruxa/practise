@@ -19,7 +19,7 @@
        value="{{$article->slug or ""}}" readonly="">
 
 <label for="">Родительская категория</label>
-<select class="form-control" name="categories[]" multiple="">
+<select class="form-control" name="category_id" multiple="">
     @include('admin.articles.parts._categories', ['categories' => $categories])
 </select>
 
@@ -38,7 +38,7 @@
 <textarea class="form-control" name="meta_description" placeholder="Мета описание">{{$article->meta_description or ""}}</textarea>
 
 <label for="">Ключевые слова</label>
-<textarea class="form-control" name="meta_keywords" placeholder="Ключевые слова, через запятую">{{$article->meta_keywords or ""}}</textarea>
+<textarea class="form-control" name="meta_keyword" placeholder="Ключевые слова, через запятую">{{$article->meta_keyword or ""}}</textarea>
 
 <hr />
 
