@@ -55,8 +55,10 @@ class ArticleController extends Controller
             endif;
 
             DB::commit();
+            flash()->success('Новость добавлена');
         }catch ( \Exception $e){
             DB::rollBack();
+            flash()->danger('Новость не добавлена');
         }
 
         return redirect()->route('admin.article.index');
