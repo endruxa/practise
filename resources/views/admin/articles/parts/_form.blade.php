@@ -42,4 +42,20 @@
 
 <hr />
 
+<div class="input-group">
+       <span class="input-group-btn">
+         <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+           <i class="fa fa-picture-o"></i> Choose
+         </a>
+       </span>
+    <input id="thumbnail" class="form-control" type="text" name="filepath">
+</div>
+<img id="holder" style="margin-top:15px;max-height:100px;">
+<script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
+<textarea id="my-editor" name="content" class="form-control"></textarea>
+<script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('vendor/unisharp/laravel-ckeditor/adapters/jquery.js')}}"></script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+
+
 <input class="btn btn-primary" type="submit" value="Сохранить">
