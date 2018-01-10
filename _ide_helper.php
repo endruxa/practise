@@ -13893,12 +13893,16 @@ namespace App\Alias {
 
     class FlashFacade {
         
-
-        /*public static function _call($type, $args)
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function _call($type, $args)
         {
             return \App\Classes\Flash::_call($type, $args);
-        }*/
-
+        }
+         
     }
  
 }

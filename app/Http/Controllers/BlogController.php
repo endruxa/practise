@@ -10,9 +10,10 @@ class BlogController extends Controller
     public function category($slug)
     {
       $category = Category::where('slug', $slug)->first();
-
+      $articles = $category->articles('published', 1)->paginate(2);
       return view('blog.category', [
-            'category' => $category
+            'category' => $category,
+            'articles' => $articles
         ]);
     }
 
