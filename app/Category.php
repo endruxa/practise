@@ -13,11 +13,24 @@ class Category extends Model
 
 
     //Mutators
-    public function setTitleAttribute($value)
+    public function setSlugAttribute($value)
     {
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = (str_slug($value). " - " . Carbon::now()->format('d-m-y-H-i'));
     }
+
+    /*public static function categories_id_list()
+    {
+        return static::pluck('title', 'id', 'parent_id')->toarray();
+    }
+
+    public function shareId()
+    {
+        \View::composer('layouts._top_menu.blade', function ($view)
+        {
+            $view->with('categories_id_list', static::categories_id_list());
+        });
+    }*/
 
     //Get children category
     public function children(){

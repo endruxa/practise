@@ -9,7 +9,7 @@ class BlogController extends Controller
 {
     public function category($slug)
     {
-      $category = Category::where('slug', $slug)->first();
+      $category = Category::where('slug', $slug)->firstOrFail();
       $articles = $category->articles('published', 1)->paginate(2);
       return view('blog.category', [
             'category' => $category,
@@ -19,11 +19,22 @@ class BlogController extends Controller
 
     public function article($slug)
     {
-       $article = Article::where('slug', $slug)->first();
+       $article = Article::where('slug', $slug)->firstOrFail();
 
        return view('blog.article', [
            'article' => $article
        ]);
+    }
+
+    public function index()
+    {
+        $categories = Category::all();
+
+        return view('layouts._header',
+            [
+               'categories' => $categories
+
+            ]);
     }
 
 }

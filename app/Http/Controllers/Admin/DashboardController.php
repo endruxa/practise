@@ -12,7 +12,7 @@ class DashboardController extends Controller
     //Dashboard
     public function dashboard(){
         $categories = Category::lastCategories(5);
-        $articles = Article::lastArticles(5);
+        $articles = Article::orderByCreated()->published(1);
 
         return view('admin.dashboard', [
             'categories' => $categories,

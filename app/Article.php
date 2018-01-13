@@ -33,21 +33,27 @@ class Article extends Model
         $this->attributes['description_short'] = strip_tags($value);
     }
 
-    /**
-     * @param $query
-     * @param $count
-     * @return mixed
-     */
-    public function scopeLastArticles($query, $count)
+
+    /*public function scopeLastArticles($query, $count)
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
+    }*/
+
+    public function scopePublished($query, $published)
+    {
+        return $query->where('published', $published)->take(2)->get();
     }
 
-    //relation with user
+    public function scopeOrderByCreated($query)
+    {
+        return $query->orderBy('created_at');
+    }
+
+    /*//relation with user
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
+    }*/
 
     //relation with categories
     public function categories()

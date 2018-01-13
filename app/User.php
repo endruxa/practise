@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\UserAdditionals;
+use App\Roles;
 /**
  * App\User
  *
@@ -49,13 +50,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function articles()
+   /* public function articles()
     {
         return $this->hasMany(Article::class, 'user_id');
+    }*/
+
+    public function useradditionals()
+    {
+        return $this->hasOne(UserAdditionals::class, 'user_id');
     }
 
-   /* public function categories()
+    public function roles()
     {
-        return $this->hasMany(Category::class);
-    }*/
+        return $this->hasMany(Roles::class, 'roles_id');
+    }
+
 }

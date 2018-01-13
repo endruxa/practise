@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                        {{--<div class="input-group">
+                        <div class="input-group">
                            <span class="input-group-btn">
                              <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
                                <i class="fa fa-picture-o"></i> Choose
@@ -41,7 +41,7 @@
 
                         <script>
                             CKEDITOR.replace('my-editor', options);
-                        </script>--}}
+                        </script>
 
                 </div>
             </div>

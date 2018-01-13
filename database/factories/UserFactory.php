@@ -23,3 +23,33 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->defineAs(App\User::class, 'admin', function (Faker $faker)
+{
+    return [
+        'name' => 'admin',
+        'email' => 'user@usergmail.com',
+        'password' => bcrypt('123456'),
+        'remember_token' => str_random(10),
+    ];
+});
+
+$factory->defineAs(App\Roles::class, 'admin', function (Faker $faker)
+{
+    return [
+        'name' => 'Администратор',
+        'slug' => 'admin',
+        'description' => 'Администратор с полными правами',
+        'group' => 'администраторы',
+    ];
+});
+
+$factory->defineAs(App\UserAdditionals::class, 'admin', function (Faker $faker)
+{
+    return [
+        'lastname' => 'Иванов',
+        'firstname' => 'Иван',
+        'patronomic' => 'Иванович',
+    ];
+});

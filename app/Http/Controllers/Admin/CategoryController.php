@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(2);
+        $categories = Category::paginate(10);
 
         return view('admin.categories.index', [
             'categories' => $categories
@@ -30,21 +30,22 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $category = Category::with('children')->where('parent_id', 0)->get();
+                                                               //Get parent category
+        $categories = Category::with('children')->where('parent_id', 0)->get();
 
         return view('admin.categories.create', [
             'category'   => collect(),
-            'categories' => $category,
-            'delimiter'  => ''
+            'categories' => $categories,
+            'delimiter'  => ''                                //элемент вложенности категорий
         ]);
     }
 
     /**
-     * @param Request $request
-     * @return $this
+     * @param BlogRequestController $request
+     * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function store(Request $request)
+    public function store(BlogRequestController $request)
     {
             Category::create($request->all());
 
@@ -72,7 +73,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $categories = Category::with('children')->where('parent_id', 0)->get();
-        /*$category = Category::with('categories')->where('id')->get();*/
+        /*$category = Category::with('articles')->where('title')->get();*/
         return view('admin.categories.edit', [
             'category'   => $category,
             'categories' => $categories,
@@ -87,9 +88,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        /*$request->validate([
-            'title' => 'unique:categories|min:3',
-        ]);*/
         $category->update($request->except('slug'));
 
         return redirect()->route('admin.category.index');
