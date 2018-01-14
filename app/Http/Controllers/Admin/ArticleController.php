@@ -29,10 +29,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = Category::with('children')->where('parent_id', 0)->get();
+        $category = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [
             'article'    => collect(),
-            'categories' => $categories,
+            'categories' => $category,
             'delimiter'  => ''
 
         ]);
@@ -96,7 +96,7 @@ class ArticleController extends Controller
      * @param Article $article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Article $article)
+    public function update(BlogRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
         $article->categories()->detach();

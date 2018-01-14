@@ -41,11 +41,11 @@ class CategoryController extends Controller
     }
 
     /**
-     * @param BlogRequestController $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function store(BlogRequestController $request)
+    public function store(Request $request)
     {
             Category::create($request->all());
 

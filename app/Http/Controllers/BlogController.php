@@ -9,8 +9,8 @@ class BlogController extends Controller
 {
     public function category($slug)
     {
-      $category = Category::where('slug', $slug)->firstOrFail();
-      $articles = $category->articles('published', 1)->paginate(2);
+      $category = Category::where('slug', $slug)->first();
+      $articles = $category->articles()->where('published', 1)->paginate(12);
       return view('blog.category', [
             'category' => $category,
             'articles' => $articles
@@ -19,14 +19,14 @@ class BlogController extends Controller
 
     public function article($slug)
     {
-       $article = Article::where('slug', $slug)->firstOrFail();
+       $article = Article::where('slug', $slug)->first();
 
        return view('blog.article', [
            'article' => $article
        ]);
     }
 
-    public function index()
+    /*public function index()
     {
         $categories = Category::all();
 
@@ -35,6 +35,6 @@ class BlogController extends Controller
                'categories' => $categories
 
             ]);
-    }
+    }*/
 
 }

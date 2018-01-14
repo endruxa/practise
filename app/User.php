@@ -28,9 +28,9 @@ use App\Roles;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    /*use Notifiable;
     const ROLE_USER = 1;
-    const ROLE_ADMIN = 2;
+    const ROLE_ADMIN = 2;*/
 
     /**
      * The attributes that are mass assignable.
@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Roles::class,'roles', 'user_id');
+        return $this->belongsToMany(Roles::class, 'roles','user_id');
     }
 
 }

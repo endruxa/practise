@@ -34,10 +34,10 @@ class Article extends Model
     }
 
 
-    /*public function scopeLastArticles($query, $count)
+    public function scopeLastArticles($query, $count)
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
-    }*/
+    }
 
     public function scopePublished($query, $published)
     {
