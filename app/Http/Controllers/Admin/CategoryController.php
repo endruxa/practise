@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
-use App\Http\Requests\BlogRequestController;
+use App\Category;;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Validator;
 
 class CategoryController extends Controller
 {

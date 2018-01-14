@@ -15,8 +15,7 @@ class Category extends Model
     //Mutators
     public function setSlugAttribute($value)
     {
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = (str_slug($value). " - " . Carbon::now()->format('d-m-y-H-i'));
+        $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('d-m-y-H-i'));
     }
 
     /*public static function categories_id_list()
