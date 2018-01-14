@@ -29,7 +29,7 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker)
 {
     return [
         'name' => 'admin',
-        'email' => 'user@usergmail.com',
+        'email' => $faker->unique()->safeEmail,
         'password' => bcrypt('123456'),
         'remember_token' => str_random(10),
     ];
@@ -47,9 +47,10 @@ $factory->defineAs(App\Roles::class, 'admin', function (Faker $faker)
 
 $factory->defineAs(App\UserAdditionals::class, 'admin', function (Faker $faker)
 {
+    $faker = \FAker\Factory::create('ru_RU');
     return [
-        'lastname' => 'Иванов',
-        'firstname' => 'Иван',
+        'lastname' => $faker->lastName,
+        'firstname' => $faker->firstName,
         'patronomic' => 'Иванович',
     ];
 });

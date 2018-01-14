@@ -15,7 +15,7 @@ class CreateUserAdditionalsTable extends Migration
     {
         Schema::create('user_additionals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->string('patronomic')->nullable();

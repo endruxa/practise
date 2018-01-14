@@ -11,10 +11,14 @@ class UsersTablesSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 'admin', 1)->create()->each(function ($user)
+       $roles = factory(App\Roles::class, 'admin')->create();
+        factory(App\User::class, 'admin', 5)->create()->each(function ($user) use($roles)
         {
+            //Many users
+            $roles->user()->attach($user);
             $user->useradditionals()->save(factory(App\UserAdditionals::class, 'admin')->make());
-            $user->roles()->save(factory(App\Roles::class, 'admin')->make());
+            //One user
+            //$user->roles()->save(factory(App\Roles::class, 'admin')->make());
         });
     }
 }
