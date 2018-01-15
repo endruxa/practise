@@ -27,6 +27,7 @@ class CreateArticlesTable extends Migration
             $table->integer('modified_by')->nullable();
             $table->timestamps();
             $table->integer('user_id')->unsigned();
+            $table->integer('category_id')->nullable();
 
         });
     }

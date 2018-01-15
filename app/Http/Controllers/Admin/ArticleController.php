@@ -55,11 +55,11 @@ class ArticleController extends Controller
             endif;
 
             DB::commit();
-           /* flash()->success('Новость добавлена');*/
+            /*flash()->success('Новость добавлена');*/
         }catch ( \Exception $e){
             DB::rollBack();
             /*flash()->danger('Новость не добавлена');*/
-        }
+      }
 
         return redirect()->route('admin.article.index');
     }
@@ -99,10 +99,10 @@ class ArticleController extends Controller
     public function update(BlogRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
-        $article->categories()->detach();
+        $article->syncChanges();
 
         if($request->input('categories')) :
-            $article->categories()->attach($request->input('categories'));
+            $article->whith('categories')->where($request->input('categories'))->save();
         endif;
 
         return redirect()->route('admin.article.index');
