@@ -51,14 +51,14 @@ class ArticleController extends Controller
                 ->user()
                 ->articles()
                 ->create($request->all());
-            if ($request->input('categories')) : $article->with('categories')->where($request->input('categories'));
+            if ($request->input('categories')) : $article->with('categories')->where($request->input('categories'))->save();
             endif;
 
             DB::commit();
-            flash()->success('Новость добавлена');
+           /* flash()->success('Новость добавлена');*/
         }catch ( \Exception $e){
             DB::rollBack();
-            flash()->danger('Новость не добавлена');
+            /*flash()->danger('Новость не добавлена');*/
         }
 
         return redirect()->route('admin.article.index');
@@ -92,7 +92,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param BlogRequestController $request
      * @param Article $article
      * @return \Illuminate\Http\RedirectResponse
      */

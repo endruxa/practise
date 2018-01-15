@@ -11,7 +11,7 @@
         @endcomponent
 
         <hr>
-            <div class="jumbotron">
+           {{-- <div class="jumbotron">
                 <div class="container">
                     @if (session()->has('flash'))
                         <h1>{{$meta_keywords}}</h1>
@@ -19,7 +19,7 @@
                         <div class="alert alert-{{ session('flash.type', 'danger') }}">{{ session('flash.message') }}</div>
                     @endif
                 </div>
-            </div>
+            </div>--}}
         <a href="{{route('admin.article.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-0"></i>Создать новость</a>
         <table class="table table-striped">
             <thead>

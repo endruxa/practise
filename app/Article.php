@@ -15,19 +15,14 @@ class Article extends Model
     //Mutators
 
     /**
-     * @param $title
-     * @return $this
-     */
-    public function setTitleAttribute($title)
-    {
-        $this->attributes['title'] = $title ;
-        $this->attributes['slug'] = (str_slug($title) . " - " . Carbon::now()->format('d-m-y-H-i'));
-        return $this;
-    }
-
-    /**
      * @param $value
      */
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('d-m-y-H-i'));
+    }
+
+
     public function setDescriptionShortAttribute($value)
     {
         $this->attributes['description_short'] = strip_tags($value);
@@ -49,11 +44,11 @@ class Article extends Model
         return $query->orderBy('created_at');
     }
 
-    /*//relation with user
+    //relation with user
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }*/
+    }
 
     //relation with categories
     public function categories()

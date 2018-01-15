@@ -71,7 +71,6 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $categories = Category::with('children')->where('parent_id', 0)->get();
-        /*$category = Category::with('articles')->where('title')->get();*/
         return view('admin.categories.edit', [
             'category'   => $category,
             'categories' => $categories,

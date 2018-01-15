@@ -50,10 +50,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-   /* public function articles()
+    public function articles()
     {
         return $this->hasMany(Article::class, 'user_id');
-    }*/
+    }
 
     public function useradditionals()
     {
