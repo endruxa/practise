@@ -12,7 +12,8 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 </head>
 
@@ -90,7 +91,16 @@
 
     <!-- Scripts -->
     <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{{asset('js/jqBootstrapValidation.js')}}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{{asset('js/clean-blog.min.js')}}"></script>
 
 <!-- Footer -->
 @include('layouts._footer')
