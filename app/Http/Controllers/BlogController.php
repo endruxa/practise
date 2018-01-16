@@ -26,15 +26,4 @@ class BlogController extends Controller
        ]);
     }
 
-    /*public function index()
-    {
-        $categories = Category::all();
-
-        return view('layouts._header',
-            [
-               'categories' => $categories
-
-            ]);
-    }*/
-
 }

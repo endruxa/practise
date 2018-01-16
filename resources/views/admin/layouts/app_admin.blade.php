@@ -102,8 +102,8 @@
     <!-- Theme JavaScript -->
     <script src="{{asset('js/clean-blog.min.js')}}"></script>
 
-<!-- Footer -->
-@include('layouts._footer')
+{{--<!-- Footer -->
+@include('layouts._footer')--}}
 
 </div>
 </body>

@@ -12,9 +12,7 @@ use DB;
 class ArticleController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -44,6 +42,9 @@ class ArticleController extends Controller
      */
     public function store(BlogRequestController $request)
     {
+        $rules = [
+            'title' => 'required'
+        ];
         try {
             DB::beginTransaction();
 
@@ -55,7 +56,8 @@ class ArticleController extends Controller
             endif;
 
             DB::commit();
-            /*flash()->success('Новость добавлена');*/
+            $this->validate($request, $rules);
+           /* flash()->success('Новость добавлена');*/
         }catch ( \Exception $e){
             DB::rollBack();
             /*flash()->danger('Новость не добавлена');*/
