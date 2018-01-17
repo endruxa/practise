@@ -24,14 +24,13 @@ class BlogRequestController extends FormRequest
     public function rules()
     {
             $rules = [
-                'title' => 'required|min:3|unique:articles',
+                'title' => 'required|min:3',
           'description' => 'required',
     'description_short' => 'required|min:5',
            'meta_title' => 'required|min:3',
      'meta_description' => 'required|min:3',
          'meta_keyword' => 'required|min:3'
             ];
-
         return $rules;
     }
 }

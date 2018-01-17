@@ -37,34 +37,41 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param BlogRequestController $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(BlogRequestController $request)
+    public function store(Request $request)
     {
-        $rules = [
-            'title' => 'required'
-        ];
-        try {
-            DB::beginTransaction();
-
-            $article = $request
-                ->user()
-                ->articles()
-                ->create($request->all());
-            if ($request->input('categories')) : $article->with('categories')->where($request->input('categories'))->save();
-            endif;
-
-            DB::commit();
-            $this->validate($request, $rules);
-           /* flash()->success('Новость добавлена');*/
-        }catch ( \Exception $e){
-            DB::rollBack();
-            /*flash()->danger('Новость не добавлена');*/
-      }
-
+        $request['user_id'] = \Auth::user()->id;
+        $article = Article::create($request->all());
+        //Categories
+        if($request->input('categories')) :
+            $article->categories()->attach($request->input('categories'));
+        endif;
         return redirect()->route('admin.article.index');
     }
+
+    /* public function store(Request $request)
+     {
+        /* try {
+             DB::beginTransaction();*/
+            /*$article = dd($request->all());*/
+                /*->user()
+                ->articles()
+                ->create(dd($request->all()));*/
+            /*if ($request->input('categories')) : $article->with('categories')
+                ->where($request->input('categories'))->save();
+            endif;*/
+
+            /*DB::commit();
+            flash()->success('Новость добавлена');*/
+       /* }catch ( \Exception $e){
+            DB::rollBack();
+            flash()->danger('Новость не добавлена');*/
+     // }
+
+        //return redirect()->route('admin.article.index');
+   // }*/
 
     /**
      * Display the specified resource.

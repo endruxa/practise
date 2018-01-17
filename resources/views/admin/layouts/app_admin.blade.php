@@ -85,8 +85,19 @@
 
 <!-- Main Content -->
 
-@yield('content')
 
+    <div class="jumbotron">
+        <div class="container">
+            @if (session()->has('flash'))
+                <h1>Hello, world!</h1>
+                <p>Welcome</p>
+                <div class="alert alert-{{ session('flash.type', 'danger') }}">{{ session('flash.message') }}</div>
+            @endif
+        </div>
+    </div>
+<div class="conteiner">
+@yield('content')
+</div>
 <hr>
 
     <!-- Scripts -->

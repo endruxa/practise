@@ -10,7 +10,7 @@ use App\Category;
 class Article extends Model
 {
     protected $fillable = ['title', 'slug','description_short', 'description', 'meta_title', 'meta_description',
-        'meta_keyword', 'published', 'created_by', 'modified_by', 'category_id'];
+        'meta_keyword', 'published', 'created_by', 'modified_by', 'category_id', 'user_id'];
 
     //Mutators
 
