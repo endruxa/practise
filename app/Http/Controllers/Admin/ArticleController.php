@@ -46,12 +46,9 @@ class ArticleController extends Controller
     {
         try {
             DB::beginTransaction();
-
-            $article = $request
-                ->user()
-                ->articles()
-                ->create($request->all());
-            if ($request->input('categories')) : $article->with('categories')->where($request->input('categories'))->save();
+            $request['user_id'] = Article->user_id()->id;
+            $article =Article::create($request->all());
+            if ($request->input('categories')) : $article->categories()->attach($request->input('categories'));
             endif;
 
             DB::commit();
@@ -99,10 +96,11 @@ class ArticleController extends Controller
     public function update(BlogRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
-        $article->syncChanges();
+        //$article->syncChanges();
+        $article->categories()->dettach();
 
         if($request->input('categories')) :
-            $article->whith('categories')->where($request->input('categories'))->save();
+            $article->categories()->attach($request->input('categories'));
         endif;
 
         return redirect()->route('admin.article.index');
