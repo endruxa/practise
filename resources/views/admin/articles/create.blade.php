@@ -11,8 +11,8 @@
         @endcomponent
 
         <hr>
-            {{--@include('admin.articles.parts._form_errors')--}}
-        <form class="form-horizontal" action="{{route('admin.article.store')}}" method="post">
+           {{-- @include('admin.articles.parts._form_errors')--}}
+        <form class="form-horizontal" action="{{asset('admin/article/store')}}" method="post">
             {{csrf_field()}}
 
             {{-- Form include --}}

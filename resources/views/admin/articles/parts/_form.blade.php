@@ -17,11 +17,13 @@
         <option value="1" >Опубликовано</option>
     @endif
 </select>
-@if($errors->has('title'))
+<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+@if ($errors->has('title'))
     <span class="help-block">
         <strong>{{ $errors->first('title') }}</strong>
     </span>
 @endif
+</div>
 <label for="">Заголовок</label>
 <input type="text" class="form-control" name="title" placeholder="Заголовок новости"
        value="{{$article->title or ""}}" >

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Article;
 use App\Category;
-use App\Http\Requests\BlogRequestController;
+use App\Http\Requests\ArticleRequestController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
@@ -37,17 +37,25 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ArticleRequestController $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(ArticleRequestController $request)
     {
+        try{
         $request['user_id'] = \Auth::user()->id;
         $article = Article::create($request->all());
         //Categories
         if($request->input('categories')) :
             $article->categories()->attach($request->input('categories'));
         endif;
+
+        DB::commit();
+        flash()->success('Новость добавлена');
+        }catch (\Exception $e){
+            DB::rollBack();
+            flash()->danger('Новость не добавлена');
+        }
         return redirect()->route('admin.article.index');
     }
 
@@ -85,10 +93,8 @@ class ArticleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
+     * @param Article $article
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Article $article)
     {
@@ -101,20 +107,21 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param BlogRequestController $request
+     * @param ArticleRequestController $request
      * @param Article $article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(BlogRequestController $request, Article $article)
+    public function update(ArticleRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
-        $article->syncChanges();
+        $article->categories()->detach();
 
         if($request->input('categories')) :
-            $article->whith('categories')->where($request->input('categories'))->save();
+            $article->categories()->attach($request->input('categories'));
         endif;
 
         return redirect()->route('admin.article.index');
+
 
     }
 

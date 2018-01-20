@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BlogRequestController extends FormRequest
+class ArticleRequestController extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +23,14 @@ class BlogRequestController extends FormRequest
      */
     public function rules()
     {
-            $rules = [
-                'title' => 'required|min:3',
-          'description' => 'required',
-    'description_short' => 'required|min:5',
-           'meta_title' => 'required|min:3',
-     'meta_description' => 'required|min:3',
-         'meta_keyword' => 'required|min:3'
-            ];
+        $rules = [
+            'title' => 'required|min:3',
+            'description_short' => 'required|min:5',
+            'description' => 'required|max:255',
+            'meta_title' => 'required|min:3',
+            'meta_description' => 'required|max:25',
+            'meta_keyword' => 'required|max:25'
+        ];
         return $rules;
     }
 }

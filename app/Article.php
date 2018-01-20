@@ -34,15 +34,11 @@ class Article extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    public function scopePublished($query, $published)
+    /*public function scopePublished($query, $published)
     {
         return $query->where('published', $published)->take(2)->get();
-    }
+    }*/
 
-    public function scopeOrderByCreated($query)
-    {
-        return $query->orderBy('created_at');
-    }
 
     //relation with user
     public function user()
