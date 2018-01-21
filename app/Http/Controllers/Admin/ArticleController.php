@@ -56,10 +56,10 @@ class ArticleController extends Controller
         endif;
 
         DB::commit();
-        flash()->success('Новость добавлена');
+        /*flash()->success('Новость добавлена');*/
         }catch (\Exception $e){
             DB::rollBack();
-            flash()->danger('Новость не добавлена');
+            /*flash()->danger('Новость не добавлена');*/
         }
         return redirect()->route('article.index');
     }
