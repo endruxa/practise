@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('title')Blog</title>
 
     <!-- Styles -->
     <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">

@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+
+   /* public  function __construct()
+    {
+        $this->middleware('admin');
+    }*/
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +54,7 @@ class CategoryController extends Controller
     {
             Category::create($request->all());
 
-            return redirect()->route('admin.category.index');
+            return redirect()->route('category.index');
     }
 
 
@@ -87,7 +94,7 @@ class CategoryController extends Controller
     {
         $category->update($request->except('slug'));
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -100,6 +107,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('category.index');
     }
 }

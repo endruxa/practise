@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
+    /*public function __construct()
+    {
+        $this->middleware('admin');
+    }*/
+
     //Dashboard
     public function dashboard(){
         $categories = Category::lastCategories(5);

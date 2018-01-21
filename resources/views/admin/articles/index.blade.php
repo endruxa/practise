@@ -25,13 +25,13 @@
                     <td>{{$article->title}}</td>
                     <td>{{$article->published}}</td>
                     <td class="text-right">
-                        <form onsubmit="if(confirm('Удалить?')){ return true} else { return false }" action="{{route('article.destroy')}}" method="post">
+                        <form onsubmit="if(confirm('Удалить?')){ return true} else { return false }" action="{{route('article.destroy', $article->id)}}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             {{csrf_field()}}
 
-                            <a class="btn btn-default" href="{{route('article.edit')}}"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-default" href="{{route('article.edit', $article)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
-                            <button type="submit" class="btn"><i class="fa fa-trash-o"></i></button>
+                            <button type="submit" class="btn"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         </form>
                     </td>
                 </tr>

@@ -16,7 +16,7 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{route('category.store')}}" method="post">
+    <form class="form-horizontal" action="{{route('category.store', $category)}}" method="post">
     {{csrf_field()}}
 
     {{-- Form include --}}

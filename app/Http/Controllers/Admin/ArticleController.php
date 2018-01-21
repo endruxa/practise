@@ -11,6 +11,11 @@ use DB;
 
 class ArticleController extends Controller
 {
+    /*public function __construct()
+    {
+        $this->middleware('admin');
+    }*/
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -56,7 +61,7 @@ class ArticleController extends Controller
             DB::rollBack();
             flash()->danger('Новость не добавлена');
         }
-        return redirect()->route('admin.article.index');
+        return redirect()->route('article.index');
     }
 
     /* public function store(Request $request)
@@ -114,13 +119,12 @@ class ArticleController extends Controller
     public function update(ArticleRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
-        $article->categories()->detach();
 
         if($request->input('categories')) :
             $article->categories()->attach($request->input('categories'));
         endif;
 
-        return redirect()->route('admin.article.index');
+        return redirect()->route('article.index');
 
 
     }
@@ -133,10 +137,9 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        $article->categories()->detach();
         $article->delete();
 
-        return redirect()->route('admin.article.index');
+        return redirect()->route('article.index');
 
     }
 }
