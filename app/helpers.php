@@ -1,8 +1,8 @@
 <?php
 /**
- * @return \App\Classes\Flash
+ * @return \App\Classes\Flach
  */
-function flash()
+function flach()
 {
-    return app('flash');
+    return app('flach');
 }

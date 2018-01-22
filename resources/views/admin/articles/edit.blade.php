@@ -11,7 +11,7 @@
         @endcomponent
 
         <hr>
-    {{--@include('admin.articles.parts._form_errors')--}}
+    @include('errors._form_errors')
         <form class="form-horizontal" action="{{route('article.update', $article)}}" method="post">
             <input type="hidden" name="_method" value="put">
             {{csrf_field()}}

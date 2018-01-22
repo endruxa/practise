@@ -11,11 +11,6 @@ use DB;
 
 class ArticleController extends Controller
 {
-    /*public function __construct()
-    {
-        $this->middleware('admin');
-    }*/
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -56,10 +51,10 @@ class ArticleController extends Controller
         endif;
 
         DB::commit();
-        /*flash()->success('Новость добавлена');*/
+        flach()->success('Новость добавлена');
         }catch (\Exception $e){
             DB::rollBack();
-            /*flash()->danger('Новость не добавлена');*/
+            flach()->danger('Новость не добавлена');
         }
         return redirect()->route('article.index');
     }
