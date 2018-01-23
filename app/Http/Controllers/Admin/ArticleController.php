@@ -48,6 +48,7 @@ class ArticleController extends Controller
     public function store(ArticleRequestController $request)
     {
         try{
+            DB::beginTransaction();
         $request['user_id'] = \Auth::user()->id;
         $article = Article::create($request->all());
         //Categories
