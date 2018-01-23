@@ -86,17 +86,14 @@
 <!-- Main Content -->
 
 
-    <div class="jumbotron">
-        <div class="container">
-            @if (session()->has('flash'))
-                <h1>Hello, world!</h1>
-                <p>Welcome</p>
-                <div class="alert alert-{{ session('flash.type', 'danger') }}">{{ session('flash.message') }}</div>
-            @endif
-        </div>
+    <div id="app" class="container">
+        @if(session()->has('flash'))
+            <div class="alert alert-{{ session('flash.type', 'danger') }}">{{ session('flash.message') }}</div>
+        @endif
+        
+        @yield('content')
+        
     </div>
-
-@yield('content')
 
 <hr>
 
