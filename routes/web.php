@@ -15,9 +15,13 @@ Route::get('/', function () {
     return view('blog.home');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/post', 'HomeController@post')->name('post');
+Route::get('/contact', 'HomeController@contact')->name('contact');
 
 
 Route::get('/blog/category/{slug?}', 'BlogController@category')->name('category');
@@ -35,5 +39,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
     Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\UploadController@upload');
-    // list all lfm routes here...
+
 });

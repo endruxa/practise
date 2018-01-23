@@ -21,6 +21,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('welcome');
     }
+
+    public function about()
+    {
+        return view('home.about');
+    }
+
+
+    public function post()
+    {
+        return view('home.post');
+    }
+
+    public function contact()
+    {
+        return view('home.contact');
+    }
+
 }

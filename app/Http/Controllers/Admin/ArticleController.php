@@ -11,6 +11,12 @@ use DB;
 
 class ArticleController extends Controller
 {
+
+    public  function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,12 +52,9 @@ class ArticleController extends Controller
     {
         try {
             DB::beginTransaction();
-
-            $article = $request
-                ->user()
-                ->articles()
-                ->create($request->all());
-            if ($request->input('categories')) : $article->with('categories')->where($request->input('categories'));
+            $request['user_id'] = \Auth::user()->id;
+            $article =Article::create($request->all());
+            if ($request->input('categories')) : $article->categories()->attach($request->input('categories'));
             endif;
 
             DB::commit();
@@ -92,14 +95,13 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param BlogRequestController $request
      * @param Article $article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Article $article)
+    public function update(BlogRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
-        $article->categories()->detach();
 
         if($request->input('categories')) :
             $article->categories()->attach($request->input('categories'));
@@ -117,7 +119,6 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        $article->categories()->detach();
         $article->delete();
 
         return redirect()->route('admin.article.index');
