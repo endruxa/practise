@@ -22,9 +22,6 @@ value="{{$category->slug or ""}}" readonly="">
 <select class="form-control" name="parent_id">
     <option value="0">-- без родительской категории --</option>
 @include('admin.categories.parts._categories', ['categories' => $categories])
-
 </select>
-
 <hr />
-
 <input class="btn btn-primary" type="submit" value="Сохранить">

@@ -1,11 +1,3 @@
-{{--@if($errors->any())
-    <ul class="list-group">
-        @foreach($errors->all() as $error)
-            <li class="list-group-item alert-danger alert">{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif--}}
-
 <label for="">Статус</label>
 <select class="form-control" name="published">
     @if(isset($article->id))
@@ -17,16 +9,10 @@
         <option value="1" >Опубликовано</option>
     @endif
 </select>
-{{--<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-@if ($errors->has('title'))
-    <span class="help-block">
-        <strong>{{ $errors->first('title') }}</strong>
-    </span>
-@endif
-</div>--}}
+
 <label for="">Заголовок</label>
 <input type="text" class="form-control" name="title" placeholder="Заголовок новости"
-       value="{{$article->title or ""}}" >
+       value="{{$article->title or ""}}">
 
 <label for="">Slug (Уникальное значение)</label>
 <input class="form-control" type="text" name="slug" placeholder="Автоматическая генерация "
@@ -56,9 +42,4 @@
 
 <hr />
 
-{{--@include('upload.index')--}}
-
 <input class="btn btn-primary" type="submit" value="Сохранить">
-
-
-

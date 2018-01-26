@@ -23,4 +23,22 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function about()
+    {
+        return
+    }
+
+
+    public function post()
+    {
+
+    }
+
+
+    public function contact()
+    {
+
+    }
+
 }

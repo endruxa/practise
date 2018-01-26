@@ -185,7 +185,7 @@ return [
         App\Providers\BlogServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        \App\Providers\FlachProvider::class
+        \App\Providers\FlashProvider::class
 
     ],
 
@@ -239,7 +239,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Flach' => App\Alias\FlashFacade::class
+        'Flash' => App\Alias\FlashFacade::class
 
     ],
 

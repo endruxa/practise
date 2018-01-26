@@ -2,8 +2,6 @@
 
 @section('content')
 
-    @include('admin.articles.parts._form_errors')
-
 <div class="container">
 
     @component('admin.components._breadcrumb')
@@ -16,7 +14,7 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{route('category.store', $category)}}" method="post">
+    <form class="form-horizontal" action="{{route('category.store')}}" method="post">
     {{csrf_field()}}
 
     {{-- Form include --}}

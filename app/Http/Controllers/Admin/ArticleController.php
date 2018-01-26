@@ -8,15 +8,17 @@ use App\Http\Requests\ArticleRequestController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
-
 class ArticleController extends Controller
 {
+
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
+        $articles = Article::orderBy('created_at', 'desc')->paginate(2);
         return view('admin.articles.index', [
             'articles' => $articles
         ]);
@@ -27,10 +29,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $category = Category::with('children')->where('parent_id', 0)->get();
+        $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [
             'article'    => collect(),
-            'categories' => $category,
+            'categories' => $categories,
             'delimiter'  => ''
 
         ]);
@@ -42,44 +44,22 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequestController $request)
     {
-        try{
-        $request['user_id'] = \Auth::user()->id;
-        $article = Article::create($request->all());
-        //Categories
-        if($request->input('categories')) :
-            $article->categories()->attach($request->input('categories'));
-        endif;
+        try {
+            DB::beginTransaction();
+            $request['user_id'] = \Auth::user()->id;
+            $article =Article::create($request->all());
+            if ($request->input('categories')) : $article->categories()->attach($request->input('categories'));
+            endif;
 
-        DB::commit();
-        flach()->success('Новость добавлена');
-        }catch (\Exception $e){
+            DB::commit();
+            flash()->success('Новость добавлена');
+        }catch ( \Exception $e){
             DB::rollBack();
-            flach()->danger('Новость не добавлена');
+            flash()->danger('Новость не добавлена');
         }
-        return redirect()->route('article.index');
+
+        return redirect()->route('admin.article.index');
     }
-
-    /* public function store(Request $request)
-     {
-        /* try {
-             DB::beginTransaction();*/
-            /*$article = dd($request->all());*/
-                /*->user()
-                ->articles()
-                ->create(dd($request->all()));*/
-            /*if ($request->input('categories')) : $article->with('categories')
-                ->where($request->input('categories'))->save();
-            endif;*/
-
-            /*DB::commit();
-            flash()->success('Новость добавлена');*/
-       /* }catch ( \Exception $e){
-            DB::rollBack();
-            flash()->danger('Новость не добавлена');*/
-     // }
-
-        //return redirect()->route('admin.article.index');
-   // }*/
 
     /**
      * Display the specified resource.
@@ -93,8 +73,10 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Article $article
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Article  $article
+     * @return \Illuminate\Http\Response
      */
     public function edit(Article $article)
     {
@@ -119,8 +101,7 @@ class ArticleController extends Controller
             $article->categories()->attach($request->input('categories'));
         endif;
 
-        return redirect()->route('article.index');
-
+        return redirect()->route('admin.article.index');
 
     }
 
@@ -134,7 +115,7 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return redirect()->route('article.index');
+        return redirect()->route('admin.article.index');
 
     }
 }

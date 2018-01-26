@@ -11,20 +11,16 @@
     @if ($category->id == $category_list->id)
         hidden= ""
     @endif
-
-    @endisset
- >
+    @endisset>
  {!! $delimiter or "" !!}{{$category_list->title or ""}}
  </option>
 
  {{--Вывод бесконечной вложенности категорий--}}
     @if(count($category_list->children) > 0)
-
         @include('admin.categories.parts._categories', [
         'categories' => $category_list->children,
         'delimiter' => ' - ' . $delimiter
         ])
-
     @endif
 
 @endforeach

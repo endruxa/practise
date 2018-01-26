@@ -1,6 +1,6 @@
 <?php
 /**
- * @return \App\Classes\Flach
+ * @return \App\Classes\Flash
  */
 function flach()
 {

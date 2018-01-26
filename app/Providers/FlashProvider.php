@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-use App\Classes\Flach;
-/*use App\Classes\Flash;*/
+use App\Classes\Flash;
 use Illuminate\Support\ServiceProvider;
 
-class FlachProvider extends ServiceProvider
+class FlashProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -25,8 +24,8 @@ class FlachProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('flach', function(){
-           return new Flach();
+        $this->app->singleton('flash', function(){
+           return new Flash();
         });
     }
 }

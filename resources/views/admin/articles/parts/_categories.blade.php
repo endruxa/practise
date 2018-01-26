@@ -3,9 +3,11 @@
     <option value="{{$category->id or ""}}"
             {{--Редактирование новости--}}
             @isset($article->id)
-            @if($category->id == $article->category_id)
+                @foreach($article->category_id as $item)
+                    @if($category->id == $item)
                         selected="selected"
                     @endif
+                @endforeach
             @endisset
     >
         {!! $delimiter or "" !!}{{$category->title or ""}}

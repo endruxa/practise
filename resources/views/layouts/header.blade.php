@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+    <div class="container-fluid">
+        <div class="navbar-header page-scroll">
 
             <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
@@ -8,18 +8,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
+                Menu <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Blog') }}
-            </a>
         </div>
         <!-- Admin menu -->
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-left">
                 @include('layouts._top_menu', ['categories' => $categories])
+            </ul>
+            <ul class="nav navbar-nav navbar-collapse">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <i class="fa fa-bars" aria-hidden="true"></i><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{route('home')}}">Home</a></li>
+                        <li><a href="{{route('about')}}">About</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{route('post')}}">Sample Post</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

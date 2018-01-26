@@ -3,7 +3,7 @@
 namespace App\Classes;
 
 /**
- * Class Flach
+ * Class Flash
  * @package App\Classes
  *
  * @method void success($message)
@@ -12,12 +12,12 @@ namespace App\Classes;
  * @method void warning($message)
  */
 
-class Flach
+class Flash
 {
 
-    protected function setFlach($message, $type)
+    protected function setFlash($message, $type)
     {
-        session()->flach('flach', [
+        session()->flash('flash', [
            'message' => $message,
            'type' => $type
         ]);
@@ -26,7 +26,7 @@ class Flach
     public function _call($type, $args)
     {
         $message = array_get($args, '0');
-        $this->setFlach($message, $type);
+        $this->setFlash($message, $type);
     }
 
 }
