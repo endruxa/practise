@@ -23,13 +23,14 @@ Auth::routes();
 //Home
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/home/about', 'HomeController@about')->name('about');
+Route::get('/home/post', 'HomeController@post')->name('post');
+Route::get('/home/contact', 'HomeController@contact')->name('contact');
 
 //Users
 
 Route::get('/blog/category/{slug?}', 'BlogController@category')->name('category');
 Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
-
 
 
 //Admin panel

@@ -26,19 +26,19 @@ class HomeController extends Controller
 
     public function about()
     {
-        return
+        return view('home.about');
     }
 
 
     public function post()
     {
-
+        return view('home.post');
     }
 
 
     public function contact()
     {
-
+        return view('home.contact');
     }
 
 }
