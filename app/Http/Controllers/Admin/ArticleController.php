@@ -11,13 +11,6 @@ use DB;
 use Illuminate\Session;
 class ArticleController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('admin');
-
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -59,12 +52,11 @@ class ArticleController extends Controller
             endif;
 
             DB::commit();
-            flash()->success('Новость добавлена');
+            /*flash()->success('Новость добавлена');*/
         }catch ( \Exception $e){
             DB::rollBack();
-            flash()->danger('Новость не добавлена');
+            /*flash()->danger('Новость не добавлена');*/
         }
-
         return redirect()->route('admin.article.index');
     }
 

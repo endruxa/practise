@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
@@ -9,16 +9,16 @@
                     <span class="icon-bar"></span>
                     Menu <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
+            </div>
+
             <!-- Admin menu -->
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li><a href="{{route('admin.index')}}">Панель состояния</a></li>
                     <li class="dropdown">
-                        <a href="{{route('admin.index')}}">Панель состояния</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="{{route('home')}}" class="dropdown-toggle" data-toggle="dropdown"
-                           role="button" aria-expanded="false">Блог</a>
-                        <ul class="dropdown-menu" role="menu">
+                        <a href="{{route('home')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Блог
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
                             <li><a href="{{route('category.index')}}">Категории</a> </li>
                             <li><a href="{{route('article.index')}}">Материалы</a> </li>
                         </ul>
@@ -51,11 +51,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            @endguest
+                    @endguest
                 </ul>
             </div>
         </div>
-            <!-- /.navbar-collapse -->
     </div>
-        <!-- /.container -->
 </nav>

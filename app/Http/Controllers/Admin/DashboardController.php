@@ -12,12 +12,13 @@ class DashboardController extends Controller
     public function dashboard(){
         $categories = Category::lastCategories(5);
         $articles = Article::lastArticles(5);
-
+        $count_categories  = $categories->count();
+        $count_articles  = $articles->count();
         return view('admin.layouts.dashboard', [
             'categories' => $categories,
             'articles' => $articles,
-            'count_categories' => $categories->count(),
-            'count_articles' => $articles->count()
+            'count_categories' => $count_categories,
+            'count_articles' => $count_articles
         ]);
     }
 

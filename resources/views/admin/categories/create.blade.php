@@ -1,4 +1,4 @@
-@extends('admin.layouts.app_admin')
+@extends('admin.app_admin')
 
 @section('content')
 
@@ -14,7 +14,7 @@
 
     <hr>
 
-    <form class="form-horizontal" action="{{route('category.store')}}" method="post">
+    <form class="form-horizontal" action="{{route('category.store', $category)}}" method="post">
     {{csrf_field()}}
 
     {{-- Form include --}}

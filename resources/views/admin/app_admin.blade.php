@@ -14,7 +14,7 @@
 <body>
 @include('admin.layouts.parts.navbar')
 
-    <div class="jumbotron">
+    {{--<div class="jumbotron">
         <div class="container">
         @if (session()->has('flash'))
                 <h1>Hello, world!</h1>
@@ -22,7 +22,7 @@
                 <div class="alert alert-{{ session('flash.type', 'danger') }}">{{ session('flash.message') }}</div>
             @endif
         </div>
-    </div>
+    </div>--}}
 <!-- Main Content -->
 <div id="app">
     @yield('content')
@@ -35,7 +35,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- Theme JavaScript -->
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/clean-blog.min.js')}}"></script>
 
 </body>
 </html>
