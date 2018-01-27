@@ -47,7 +47,7 @@ $factory->defineAs(App\Roles::class, 'admin', function (Faker $faker)
 
 $factory->defineAs(App\UserAdditionals::class, 'admin', function (Faker $faker)
 {
-    $faker = \FAker\Factory::create('ru_RU');
+    $faker = \Faker\Factory::create('ru_RU');
     return [
         'lastname' => $faker->lastName,
         'firstname' => $faker->firstName,

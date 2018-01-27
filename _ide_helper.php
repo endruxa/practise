@@ -13914,7 +13914,17 @@ namespace Intervention\Image\Facades {
 namespace App\Alias { 
 
     class FlashFacade {
-
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function _call($type, $args)
+        {
+            return \App\Classes\Flash::_call($type, $args);
+        }
+         
     }
  
 }

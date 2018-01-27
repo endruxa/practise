@@ -18,9 +18,8 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::user()->roles == User::ROLE_ADMIN) {
-            return $next($request);
+            return redirect(route('admin.index'));
         }
-
-        abort(403, 'Access denied');
+        return $next($request);
     }
 }
