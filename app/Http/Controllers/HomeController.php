@@ -21,24 +21,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('layouts.home.home');
     }
 
     public function about()
     {
-        return view('home.about');
+        return view('layouts.home.about');
     }
 
 
     public function post()
     {
-        return view('home.post');
+        return view('layouts.home.post');
     }
 
 
     public function contact()
     {
-        return view('home.contact');
+        return view('layouts.home.contact');
     }
 
 }

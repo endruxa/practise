@@ -9,7 +9,7 @@
         <meta name="description" content="@yield('meta_description')">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>@yield('title')Blog</title>
+        <title>@yield('title', config('app.name'))</title>
         <!-- Bootstrap Core CSS -->
         <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         <!-- Theme CSS -->
@@ -23,11 +23,11 @@
 <body>
     <div id="app">
         @include('layouts.header')
-        @include('background_image')
+        @include('layouts.background_image')
         @yield('content')
-        @include('content.content')
-        <hr>
+        @include('layouts.content.content')
     </div>
+    <hr>
     <!-- Footer -->
 @include('layouts._footer')
     <!-- jQuery -->
@@ -37,7 +37,6 @@
     <!-- Contact Form JavaScript -->
     <script src="{{asset('js/jqBootstrapValidation.js')}}"></script>
     <script src="{{asset('js/contact_me.js')}}"></script>
-
     <!-- Theme JavaScript -->
     <script src="{{asset('js/clean-blog.min.js')}}"></script>
 

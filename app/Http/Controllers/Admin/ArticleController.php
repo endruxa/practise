@@ -8,6 +8,7 @@ use App\Http\Requests\ArticleRequestController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Session;
 class ArticleController extends Controller
 {
 

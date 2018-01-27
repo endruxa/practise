@@ -2,7 +2,7 @@
 /**
  * @return \App\Classes\Flash
  */
-function flach()
+function flash()
 {
-    return app('flach');
+    return app('flash');
 }

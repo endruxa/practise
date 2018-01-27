@@ -1,15 +1,12 @@
 @extends('admin.layouts.app_admin')
-
 @section('content')
 
     <div class="container">
-
         @component('admin.components._breadcrumb')
             @slot('title') Список новостей @endslot
             @slot('parent') Главная @endslot
             @slot('active') Новости @endslot
         @endcomponent
-
         <hr>
         <a href="{{route('article.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-0" aria-hidden="true"></i>Создать новость</a>
         <table class="table table-striped">
@@ -25,7 +22,7 @@
                     <td>{{$article->published}}</td>
                     <td class="text-right">
                         <form onsubmit="if(confirm('Удалить?')){ return true} else { return false }" action="{{route('article.destroy',
-                $article)}}" method="post">
+                $article->id)}}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             {{csrf_field()}}
 

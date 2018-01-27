@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\User;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
@@ -16,8 +17,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user = $request->user();
-        if ($user && $user->role == User::ROLE_ADMIN) {
+        if (Auth::user()->roles == User::ROLE_ADMIN) {
             return $next($request);
         }
 

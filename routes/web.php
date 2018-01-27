@@ -11,14 +11,11 @@
 |
 */
 
-
+Auth::routes();
 
 Route::get('/', function () {
     return view('blog.home');
 });
-
-Auth::routes();
-
 
 //Home
 

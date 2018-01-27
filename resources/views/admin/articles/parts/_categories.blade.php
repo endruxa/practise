@@ -15,11 +15,9 @@
 
     {{--Вывод бесконечной вложенности категорий--}}
     @if(count($category->children) > 0)
-
         @include('admin.articles.parts._categories', [
         'categories' => $category->children,
         'delimiter' => ' - ' . $delimiter
         ])
-
     @endif
 @endforeach

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Article;
 use App\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -14,7 +13,7 @@ class DashboardController extends Controller
         $categories = Category::lastCategories(5);
         $articles = Article::lastArticles(5);
 
-        return view('admin.dashboard', [
+        return view('admin.layouts.dashboard', [
             'categories' => $categories,
             'articles' => $articles,
             'count_categories' => $categories->count(),

@@ -6,23 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('title', config('app.name'))</title>
     <!-- Styles -->
-    <link href="{{asset('/css/clean-blog.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 </head>
 <body>
-@include('parts.navbar')
-    <!-- Main Content -->
-@yield('content)
+@include('admin.layouts.parts.navbar')
+
+    <div class="jumbotron">
+        <div class="container">
+        @if (session()->has('flash'))
+                <h1>Hello, world!</h1>
+                <p>Welcome</p>
+                <div class="alert alert-{{ session('flash.type', 'danger') }}">{{ session('flash.message') }}</div>
+            @endif
+        </div>
+    </div>
+<!-- Main Content -->
+<div id="app">
+    @yield('content')
+</div>
 <hr>
-    <!-- Scripts -->
-<script src="{{asset('/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+<!-- jQuery -->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('/js/jqBootstrapValidation.js')}}"></script>
-<script src="{{asset('/js/clean-blog.min.js')}}"></script>
-    <!-- Footer -->
-@include('layouts._footer')
+<script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!-- Theme JavaScript -->
+<script src="{{asset('js/app.js')}}"></script>
+
 </body>
 </html>
