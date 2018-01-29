@@ -31,12 +31,17 @@
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
 
+<hr>
+
 <img id="holder" style="margin-top:15px;max-height:100px;">
 
-<script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
+<!-- jQuery -->
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+
+<script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 
 <textarea id="my-editor" name="content" class="form-control"></textarea>
-<script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
 <script>
     var options = {
         filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
@@ -47,5 +52,7 @@
 </script>
 
 <script>
+    CKEDITOR.replace('description_short');
+    CKEDITOR.replace('description');
     CKEDITOR.replace('my-editor', options);
 </script>

@@ -20,8 +20,6 @@
 </div>
 <hr>
 
-<!-- jQuery -->
-<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <!-- CKEditor -->
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <!-- Bootstrap Core JavaScript -->
