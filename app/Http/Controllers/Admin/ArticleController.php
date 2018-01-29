@@ -31,7 +31,7 @@ class ArticleController extends Controller
     {
         $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [
-            'article'    => collect(),
+            'article'    => [],
             'categories' => $categories,
             'delimiter'  => ''
 
@@ -44,20 +44,25 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequestController $request)
     {
+        $categoryIds = $request->get('category_id');
         try {
             DB::beginTransaction();
-            $request['user_id'] = \Auth::user()->id;
-            $article =Article::create($request->all());
-            if ($request->input('categories')) : $article->categories()->attach($request->input('categories'));
-            endif;
 
+            $article = $request->
+            user()
+            ->articles()
+            ->create($request->all());
+            $article->categories()->attach($categoryIds);
+            //Categories
+            if($request->input('categories')) : $article->categories()->attach(dd($request->input('categories')));
+            endif;
             DB::commit();
-            /*flash()->success('Новость добавлена');*/
+            \session()->flash('success', 'Новость успешно добавлена!');
         }catch ( \Exception $e){
             DB::rollBack();
-            /*flash()->danger('Новость не добавлена');*/
+            \session()->flash('error', 'Новость не добавлена!');
         }
-        return redirect()->route('admin.article.index');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -96,11 +101,10 @@ class ArticleController extends Controller
     {
         $article->update($request->except('slug'));
 
-        if($request->input('categories')) :
-            $article->categories()->attach($request->input('categories'));
+        if($request->input('categories')) : $article->categories()->attach($request->input('categories'));
         endif;
 
-        return redirect()->route('admin.article.index');
+        return redirect()->route('admin.index');
 
     }
 
@@ -114,7 +118,7 @@ class ArticleController extends Controller
     {
         $article->delete();
 
-        return redirect()->route('admin.article.index');
+        return redirect()->route('admin.index');
 
     }
 }

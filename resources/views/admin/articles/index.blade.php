@@ -8,7 +8,7 @@
             @slot('active') Новости @endslot
         @endcomponent
         <hr>
-        <a href="{{route('article.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-0" aria-hidden="true"></i>Создать новость</a>
+        <a href="{{route('article.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Создать новость</a>
         <table class="table table-striped">
             <thead>
             <th>Наименование</th>

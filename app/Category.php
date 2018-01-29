@@ -18,19 +18,6 @@ class Category extends Model
         $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('d-m-y-H-i'));
     }
 
-    /*public static function categories_id_list()
-    {
-        return static::pluck('title', 'id', 'parent_id')->toarray();
-    }
-
-    public function shareId()
-    {
-        \View::composer('layouts._top_menu.blade', function ($view)
-        {
-            $view->with('categories_id_list', static::categories_id_list());
-        });
-    }*/
-
     //Get children category
     public function children(){
 
@@ -40,7 +27,7 @@ class Category extends Model
     //relation with articles
     public function articles()
     {
-        return $this->hasMany(Article::class, 'category_id');
+        return $this->belongsToMany(Article::class);
     }
 
 
@@ -49,9 +36,5 @@ class Category extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    /* public function user()
-     {
-         return $this->belongsTo(User::class);
-     }*/
 
 }

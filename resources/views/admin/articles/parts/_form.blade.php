@@ -14,7 +14,7 @@
 <label for="">Slug (Уникальное значение)</label>
 <input class="form-control" type="text" name="slug" placeholder="Автоматическая генерация " value="{{$article->slug or ""}}" readonly="">
 <label for="">Родительская категория</label>
-<select class="form-control" name="category_id" multiple="">
+<select class="form-control" name="categories[]" multiple="">
     @include('admin.articles.parts._categories', ['categories' => $categories])
 </select>
 <label for="">Краткое описание</label>

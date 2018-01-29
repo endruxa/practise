@@ -10,7 +10,7 @@ use App\Category;
 class Article extends Model
 {
     protected $fillable = ['title', 'slug','description_short', 'description', 'meta_title', 'meta_description',
-        'meta_keyword', 'published', 'created_by', 'modified_by', 'category_id', 'user_id'];
+        'meta_keyword', 'published', 'created_by', 'modified_by', 'user_id'];
 
     //Mutators
 
@@ -34,11 +34,11 @@ class Article extends Model
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
 
-    /*public function scopePublished($query, $published)
-    {
-        return $query->where('published', $published)->take(2)->get();
-    }*/
 
+    public function getCategoryIdAttribute()
+    {
+        return $this->categories()->pluck('id');
+    }
 
     //relation with user
     public function user()
@@ -49,7 +49,7 @@ class Article extends Model
     //relation with categories
     public function categories()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsToMany(Category::class);
     }
 
     //relation with uploadFile

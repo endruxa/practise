@@ -17,9 +17,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->roles == User::ROLE_ADMIN) {
-            return redirect(route('admin.index'));
+        if (Auth::user()->role == User::ROLE_ADMIN) {
+            return $next($request);
         }
-        return $next($request);
+            abort('404');
     }
 }

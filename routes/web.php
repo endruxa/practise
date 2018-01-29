@@ -33,7 +33,7 @@ Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
 //Admin panel
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function (){
-
+    Route::group(['middleware' => 'admin'], function (){
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
 
     Route::get('/category', 'CategoryController@index')->name('category.index');
@@ -49,7 +49,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('/article/edit/{article}', 'ArticleController@edit')->name('article.edit');
     Route::any('/article/update/{article}', 'ArticleController@update')->name('article.update');
     Route::any('/article/destroy/{article}', 'ArticleController@destroy')->name('article.destroy');
-} );
+    });
+});
 
 
 

@@ -19,6 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "alertify.js": "^1.0.12",
         "ckeditor": "^4.8.0"
     }
 }

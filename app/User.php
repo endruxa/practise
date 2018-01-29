@@ -37,7 +37,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'roles'];
+    protected $fillable = ['name', 'email', 'password', 'role'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -49,16 +49,6 @@ class User extends Authenticatable
     public function articles()
     {
         return $this->hasMany(Article::class, 'user_id');
-    }
-
-    public function useradditionals()
-    {
-        return $this->hasOne(UserAdditionals::class, 'user_id');
-    }
-
-    public function roles()
-    {
-        return $this->belongsToMany(Roles::class, 'roles','user_id');
     }
 
 }

@@ -12,7 +12,7 @@
 
 <hr>
 
-<a href="{{route('category.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-0" aria-hidden="true"></i>Создать категорию</a>
+<a href="{{route('category.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Создать категорию</a>
     <table class="table table-striped">
         <thead>
         <th>Наименование</th>
