@@ -22,11 +22,13 @@
 
 <!-- jQuery -->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<!-- CKEditor -->
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- Theme JavaScript -->
 <script src="{{asset('js/clean-blog.min.js')}}"></script>
+<!-- Alertify -->
 <script src={{asset('js/alertify.js')}}></script>
 @include('inc.message')
 </body>

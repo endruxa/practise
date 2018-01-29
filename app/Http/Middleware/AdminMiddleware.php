@@ -8,18 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::user()->role == User::ROLE_ADMIN) {
-            return $next($request);
-        }
-            abort('404');
+            if (Auth::user()->role == 2)
+            {
+                return $next($request);
+            }
+                return redirect(route('admin.index'));
     }
 }

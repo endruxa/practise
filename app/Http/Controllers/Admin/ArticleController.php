@@ -31,7 +31,7 @@ class ArticleController extends Controller
     {
         $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [
-            'article'    => [],
+            'article'    => collect(),
             'categories' => $categories,
             'delimiter'  => ''
 
@@ -54,7 +54,7 @@ class ArticleController extends Controller
             ->create($request->all());
             $article->categories()->attach($categoryIds);
             //Categories
-            if($request->input('categories')) : $article->categories()->attach(dd($request->input('categories')));
+            if($request->input('categories')) : $article->categories()->attach(($request->input('categories')));
             endif;
             DB::commit();
             \session()->flash('success', 'Новость успешно добавлена!');

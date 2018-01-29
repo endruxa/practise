@@ -30,3 +30,22 @@
 <textarea class="form-control" name="meta_keyword" placeholder="Ключевые слова, через запятую">{{$article->meta_keyword or ""}}</textarea>
 <hr />
 <input class="btn btn-primary" type="submit" value="Сохранить">
+
+<img id="holder" style="margin-top:15px;max-height:100px;">
+
+<script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
+
+<textarea id="my-editor" name="content" class="form-control"></textarea>
+<script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+<script>
+    var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+    };
+</script>
+
+<script>
+    CKEDITOR.replace('my-editor', options);
+</script>

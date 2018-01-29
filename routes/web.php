@@ -53,7 +53,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 });
 
 
-
 //CKEditor
 
 Route::group(['middleware' => 'auth'], function () {
