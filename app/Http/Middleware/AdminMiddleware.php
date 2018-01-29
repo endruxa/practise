@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\User;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
@@ -16,11 +17,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user = $request->user();
-        if ($user && $user->role == User::ROLE_ADMIN) {
-            return $next($request);
+        if (Auth::user()->roles == User::ROLE_ADMIN) {
+            return redirect(route('admin.index'));
         }
-
-        abort(403, 'Access denied');
+        return $next($request);
     }
 }
