@@ -29,18 +29,12 @@
 <label for="">Ключевые слова</label>
 <textarea class="form-control" name="meta_keyword" placeholder="Ключевые слова, через запятую">{{$article->meta_keyword or ""}}</textarea>
 <hr />
+
 <input class="btn btn-primary" type="submit" value="Сохранить">
 
-<hr>
-
 <img id="holder" style="margin-top:15px;max-height:100px;">
-
-<!-- jQuery -->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
-
-<textarea id="my-editor" name="content" class="form-control"></textarea>
 <script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
 <script>
     var options = {
@@ -52,7 +46,13 @@
 </script>
 
 <script>
-    CKEDITOR.replace('description_short');
-    CKEDITOR.replace('description');
-    CKEDITOR.replace('my-editor', options);
+    CKEDITOR.replace('description',options);
 </script>
+
+
+
+
+
+
+
+

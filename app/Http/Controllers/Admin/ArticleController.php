@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Session;
+use App\Http\Controllers\Admin\AdminUploadImages;
 class ArticleController extends Controller
 {
     /**
@@ -44,23 +45,28 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequestController $request)
     {
+
         $categoryIds = $request->get('category_id');
         try {
             DB::beginTransaction();
 
-            $article = $request->
-            user()
-            ->articles()
-            ->create($request->all());
+            $article = $request->user()->articles()->create($request->all());
             $article->categories()->attach($categoryIds);
             //Categories
             if($request->input('categories')) : $article->categories()->attach(($request->input('categories')));
             endif;
+            /*if(isset($request['content'])){
+                $request['content']->save();
+            }*/
             DB::commit();
             \session()->flash('success', 'Новость успешно добавлена!');
+
         }catch ( \Exception $e){
+
             DB::rollBack();
             \session()->flash('error', 'Новость не добавлена!');
+
+            return back()->withInput()->withErrors($e->getMessage());
         }
         return redirect()->route('admin.index');
     }
@@ -100,7 +106,7 @@ class ArticleController extends Controller
     public function update(ArticleRequestController $request, Article $article)
     {
         $article->update($request->except('slug'));
-
+        //Categories
         if($request->input('categories')) : $article->categories()->attach($request->input('categories'));
         endif;
 

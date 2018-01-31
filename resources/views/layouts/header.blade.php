@@ -12,9 +12,8 @@
             </button>
 
         </div>
-        <!-- Admin menu -->
+
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav navbar-left">
                 @include('layouts._top_menu', ['categories' => $categories])
             </ul>
@@ -25,7 +24,7 @@
                         <li><a href="{{route('home')}}">Home</a></li>
                         <li><a href="{{route('about')}}">About</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="{{route('post')}}">Sample Post</a></li>
+                        {{--<li><a href="{{route('post')}}">Sample Post</a></li>--}}
                         <li role="separator" class="divider"></li>
                         <li><a href="{{route('contact')}}">Contact</a></li>
                     </ul>

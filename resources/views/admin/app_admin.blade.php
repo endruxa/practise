@@ -21,6 +21,7 @@
 <hr>
 
 <!-- CKEditor -->
+<script src="{{asset('/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use DB;
 class CategoryController extends Controller
 {
     /**
@@ -45,9 +45,23 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-            Category::create($request->all());
+        try{
+            $this->validate($request, [
+                'title'     => 'required|string|min:4|max:20',
+                'parent_id' => 'integer',
+                'published' => 'integer'
+            ]);
 
-            return redirect()->route('category.index');
+            DB::beginTransaction();
+            Category::create($request->all());
+            DB::commit();
+            \session()->flash('success', 'Категория добавлена!');
+        }catch (\Exception $e){
+            DB::rollBack();
+            /*\session()->flash('error', 'Категория не добавлена!');*/
+            return back()->withInput()->with('errors', $e->getMessage());
+        }
+        return redirect()->route('category.index');
     }
 
 

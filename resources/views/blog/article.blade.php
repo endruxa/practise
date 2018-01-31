@@ -8,9 +8,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <h1>{{$article->title}}</h1>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2>{{$article->title}}</h2>
                 <p>{!! $article->description !!}</p>
+                <p class="post-meta">Created by<a href="#"><br></a>{{$article->created_at}}</p>
             </div>
         </div>
     </div>

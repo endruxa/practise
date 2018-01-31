@@ -11,34 +11,34 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title', config('app.name'))</title>
         <!-- Bootstrap Core CSS -->
-        <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         <!-- Theme CSS -->
-        <link href="{{asset('css/clean-blog.min.css')}}" rel="stylesheet">
+        <link href="{{asset('/css/clean-blog.min.css')}}" rel="stylesheet">
         <!-- Custom Fonts -->
-        <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-        <link href='{{asset('vendor/https/family-lora.css')}}' rel='stylesheet' type='text/css'>
-        <link href='{{asset('vendor/https/family-open.css')}}' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" type="image/png" href="{{ asset('vendor/laravel-filemanager/img/folder.png') }}">
+        <link href="{{asset('/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+        <link href='{{asset('/vendor/https/family-lora.css')}}' rel='stylesheet' type='text/css'>
+        <link href='{{asset('/vendor/https/family-open.css')}}' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" type="image/png" href="{{ asset('/vendor/laravel-filemanager/img/folder.png') }}">
     </head>
 <body>
-    <div id="app">
-        @include('layouts.header')
-        @include('layouts.background_image')
-        @yield('content')
-        @include('layouts.content.content')
-    </div>
+<div id="app">
+    @include('layouts.header')
+    @include('layouts.background_image')
+    @yield('content')
+    {{--@include('layouts.content.content')--}}
+</div>
     <hr>
     <!-- Footer -->
-@include('layouts._footer')
+    @include('layouts._footer')
     <!-- jQuery -->
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('/vendor/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- Contact Form JavaScript -->
-    <script src="{{asset('js/jqBootstrapValidation.js')}}"></script>
-    <script src="{{asset('js/contact_me.js')}}"></script>
+    <script src="{{asset('/js/jqBootstrapValidation.js')}}"></script>
+    <script src="{{asset('/js/contact_me.js')}}"></script>
     <!-- Theme JavaScript -->
-    <script src="{{asset('js/clean-blog.min.js')}}"></script>
+    <script src="{{asset('/js/clean-blog.min.js')}}"></script>
 
 </body>
 </html>

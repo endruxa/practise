@@ -24,12 +24,12 @@ class ArticleRequestController extends FormRequest
     public function rules()
     {
         $rules = [
-            'title' => 'required|min:3',
+            'title' => 'required|string|min:4|max:25',
             'description_short' => 'required|min:5',
             'description' => 'required|max:255',
-            'meta_title' => 'required|min:3',
-            'meta_description' => 'required|max:25',
-            'meta_keyword' => 'required|max:25'
+            'meta_title' => 'required|string|min:4|max:25',
+            'meta_description' => 'required|string|min:4|max:25',
+            'meta_keyword' => 'required|string|min:4|max:25'
         ];
         return $rules;
     }
