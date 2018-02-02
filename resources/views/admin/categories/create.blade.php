@@ -13,15 +13,12 @@
     @endcomponent
 
     <hr>
-
-    <form class="form-horizontal" action="{{route('category.store', $category)}}" method="post">
-    {{csrf_field()}}
-
-    {{-- Form include --}}
+    @include('errors._form_errors')
+        <form class="form-horizontal" action="{{route('category.store', $category)}}" method="post">
+                 {{csrf_field()}}
     @include('admin.categories.parts._form')
-
-    </form>
-
+            <input type="hidden" name="created_by" value="{{Auth::id()}}">
+        </form>
 </div>
 
 @endsection

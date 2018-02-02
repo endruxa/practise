@@ -45,19 +45,14 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequestController $request)
     {
-
-        $categoryIds = $request->get('category_id');
         try {
             DB::beginTransaction();
-
-            $article = $request->user()->articles()->create($request->all());
-            $article->categories()->attach($categoryIds);
+            $request['user_id'] = $request->user()->id;
+            $article = Article::create($request->all());
             //Categories
             if($request->input('categories')) : $article->categories()->attach(($request->input('categories')));
             endif;
-            /*if(isset($request['content'])){
-                $request['content']->save();
-            }*/
+
             DB::commit();
             \session()->flash('success', 'Новость успешно добавлена!');
 
@@ -66,7 +61,7 @@ class ArticleController extends Controller
             DB::rollBack();
             \session()->flash('error', 'Новость не добавлена!');
 
-            return back()->withInput()->withErrors($e->getMessage());
+            return back()->withInput();
         }
         return redirect()->route('admin.index');
     }
@@ -105,11 +100,18 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequestController $request, Article $article)
     {
+        try{
         $article->update($request->except('slug'));
+        $article->categories()->detach();
         //Categories
         if($request->input('categories')) : $article->categories()->attach($request->input('categories'));
         endif;
-
+        \session()->flash('success', 'Новость успешно отредактирована');
+        }catch (\Exception $e)
+        {
+            \session()->flash('error', 'Ошибка редактирования');
+            return back()->withInput();
+        }
         return redirect()->route('admin.index');
 
     }
@@ -122,6 +124,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        $article->categories()->detach();
         $article->delete();
 
         return redirect()->route('admin.index');

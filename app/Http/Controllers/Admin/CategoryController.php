@@ -55,11 +55,11 @@ class CategoryController extends Controller
             DB::beginTransaction();
             Category::create($request->all());
             DB::commit();
-            \session()->flash('success', 'Категория добавлена!');
+            \session()->flash('success', 'Категория  успешно добавлена!');
         }catch (\Exception $e){
             DB::rollBack();
-            /*\session()->flash('error', 'Категория не добавлена!');*/
-            return back()->withInput()->with('errors', $e->getMessage());
+            \session()->flash('error', 'Категория не добавлена!');
+            return back()->withInput()->withErrors($e->getMessage());
         }
         return redirect()->route('category.index');
     }
@@ -100,6 +100,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->except('slug'));
+
 
         return redirect()->route('category.index');
     }

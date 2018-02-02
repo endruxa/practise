@@ -23,12 +23,6 @@ class Article extends Model
     }
 
 
-    public function setDescriptionShortAttribute($value)
-    {
-        $this->attributes['description_short'] = strip_tags($value);
-    }
-
-
     public function scopeLastArticles($query, $count)
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
