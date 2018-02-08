@@ -1,14 +1,13 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.33 on 2018-02-02.
+ * Generated for Laravel 5.5.34 on 2018-02-08 17:41:28.
+ *
+ * This file should not be included in your code, only analyzed by your IDE!
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
  */
-namespace  {
-    exit("This file should not be included, only analyzed by your IDE");
-}
 
 namespace Illuminate\Support\Facades { 
 
@@ -13911,24 +13910,6 @@ namespace Intervention\Image\Facades {
  
 }
 
-namespace App\Alias { 
-
-    class FlashFacade {
-        
-        /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function _call($type, $args)
-        {
-            return \App\Classes\Flash::_call($type, $args);
-        }
-         
-    }
- 
-}
-
 
 namespace  { 
 
@@ -16060,8 +16041,6 @@ namespace  {
     class Html extends \Collective\Html\HtmlFacade {}
 
     class Image extends \Intervention\Image\Facades\Image {}
-
-    class Flash extends \App\Alias\FlashFacade {}
  
 }
 

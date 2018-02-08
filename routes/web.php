@@ -51,6 +51,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::any('/article/update/{article}', 'ArticleController@update')->name('article.update');
     Route::any('/article/destroy/{article}', 'ArticleController@destroy')->name('article.destroy');
     });
+
+    Route::group(['prefix' => 'users'], function(){
+        Route::resource('/user', 'UserController', ['as' => 'admin.users']);
+    });
 });
 
 

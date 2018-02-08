@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,10 +9,16 @@ class AdminMiddleware
 {
     public function handle($request, Closure $next)
     {
-            if (Auth::user()->role == 2)
+            if(!$request->user())
+            {
+                return redirect('/');
+            }
+
+            if(Auth::user()->role == 2)
             {
                 return $next($request);
             }
-                return redirect(route('admin.index'));
+
+            return redirect('/');
     }
 }
