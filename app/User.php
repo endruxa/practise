@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Comment;
 /**
  * App\User
  *
@@ -47,6 +48,11 @@ class User extends Authenticatable
     public function articles()
     {
         return $this->hasMany(Article::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

@@ -19,13 +19,14 @@
         <link href='{{asset('/vendor/https/family-lora.css')}}' rel='stylesheet' type='text/css'>
         <link href='{{asset('/vendor/https/family-open.css')}}' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" type="image/png" href="{{ asset('/vendor/laravel-filemanager/img/folder.png') }}">
+        <link rel="stylesheet" type="text/css" media="all" href="{{asset('/comments/css/comments.css')}}" />
     </head>
 <body>
 <div id="app">
     @include('layouts.header')
     @include('layouts.background_image')
     @yield('content')
-    {{--@include('layouts.content.content')--}}
+    @yield('comments')
 </div>
     <hr>
     <!-- Footer -->
@@ -34,6 +35,9 @@
     <script src="{{asset('/vendor/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- Comments -->
+    <script type="text/javascript" src="{{asset('/comments/js/comment-reply.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/comments/js/comment-scripts.js')}}"></script>
     <!-- Contact Form JavaScript -->
     <script src="{{asset('/js/jqBootstrapValidation.js')}}"></script>
     <script src="{{asset('/js/contact_me.js')}}"></script>

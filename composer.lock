@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b367e64e98a29f198283f37c8055cbd",
+    "content-hash": "5cb4aafab3a0d179bb44ad9af687f478",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1085,6 +1085,55 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "klisl/laravel-comments",
+            "version": "1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/klisl/laravel-comments.git",
+                "reference": "3bfea4cb008637bb27a3d8337315afa33496f8fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/klisl/laravel-comments/zipball/3bfea4cb008637bb27a3d8337315afa33496f8fa",
+                "reference": "3bfea4cb008637bb27a3d8337315afa33496f8fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Klisl\\Comments\\CommentsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Klisl\\Comments\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Klimenchuk",
+                    "email": "ksl80@ukr.net",
+                    "homepage": "https://github.com/klisl/laravel-comments",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Package for using comments in Laravel-5",
+            "keywords": [
+                "comments",
+                "laravel"
+            ],
+            "time": "2018-01-08T20:52:54+00:00"
         },
         {
             "name": "laravel/framework",

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Comment;
 
 class Article extends Model
 {
@@ -46,10 +47,10 @@ class Article extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    //relation with uploadFile
-    public function uploadFile()
+    //relation with comments
+    public function comments()
     {
-        return $this->hasMany(UploadFile::class, 'article_id');
+        return $this->hasMany(Comment::class, 'article_id');
     }
 
 }

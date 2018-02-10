@@ -17,3 +17,9 @@
     </div>
 
 @endsection
+
+@section('comments')
+
+    @include('comments.comments_block', ['essence' => $article])
+
+@endsection
