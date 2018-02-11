@@ -22,7 +22,8 @@
 			</div>
 		</div>
 	</div>
-
+	
+	
 	@if(isset($com[$item->id]))
 	<ul class="children">
 		@include('comments.comment', ['items' => $com[$item->id]])

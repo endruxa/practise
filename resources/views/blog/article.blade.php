@@ -7,8 +7,6 @@
 @section('css')
     @parent
 
-    {{--<link rel="stylesheet" type="text/css" media="all" href="{{asset('/css/app.css')}}" />--}}
-    <link rel="stylesheet" type="text/css" media="all" href="{{asset('/comments/css/comments.css')}}" />
 
 @endsection
 
@@ -35,7 +33,6 @@
 @section('js')
     @parent
     <!-- Comments -->
-    <script type="text/javascript" src="{{asset('/comments/js/comment-reply.js')}}"></script>
-    <script type="text/javascript" src="{{asset('/comments/js/comment-scripts.js')}}"></script>
+
 
 @endsection

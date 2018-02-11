@@ -43,7 +43,7 @@
 			<p class="comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
 			<p class="comment-form-comment"><label for="comment">Ваш комментарий</label><textarea id="comment" name="text" cols="45" rows="8"></textarea></p>
 
-			<input type="hidden" id="comment_article_id" name="comment_article_id" value="{{ $article->id}}">
+			<input type="hidden" id="comment_post_ID" name="comment_article_id" value="{{ $article->id}}">
 			<input type="hidden" id="comment_parent" name="comment_parent" value="">
 
 			{{ csrf_field()}}
@@ -55,4 +55,5 @@
 		</form>
 	</div>
 	
+</div>
 </div>

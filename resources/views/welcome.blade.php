@@ -13,7 +13,6 @@
         <title>@yield('title', config('app.name'))</title>
 
         @section('css')
-
         <!-- Bootstrap Core CSS -->
         <link href="{{asset('/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
         <!-- Theme CSS -->
@@ -23,6 +22,7 @@
         <link href='{{asset('/vendor/https/family-lora.css')}}' rel='stylesheet' type='text/css'>
         <link href='{{asset('/vendor/https/family-open.css')}}' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" type="image/png" href="{{ asset('/vendor/laravel-filemanager/img/folder.png') }}">
+        <link rel="stylesheet" type="text/css" media="all" href="{{asset('comments/css/comments.css')}}">
         @show
 
     </head>
@@ -39,7 +39,6 @@
     @include('layouts._footer')
     <!-- jQuery -->
 @section('js')
-
     <script src="{{asset('/vendor/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -48,7 +47,9 @@
     <script src="{{asset('/js/contact_me.js')}}"></script>
     <!-- Theme JavaScript -->
     <script src="{{asset('/js/clean-blog.min.js')}}"></script>
-
+    <script type="text/javascript" src="{{asset('comments/js/comment-reply.js')}}" ></script>
+    <script type="text/javascript" src="{{asset('comments/js/comment-scripts.js')}}" ></script>
 @show
+
 </body>
 </html>

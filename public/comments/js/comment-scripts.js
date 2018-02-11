@@ -31,51 +31,54 @@ jQuery(document).ready(function($){
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                       },
                     success: function(html){
+                                                                                                            
+                        if(html.success){
+                            wrap_result.append('<br><strong>Сохранено!</strong><br>')
+                                .delay(2000) //скрываем через 2 сек
 
-                        if(html.success) wrap_result.append('<br><strong>Сохранено!</strong><br>')
-                            .delay(2000) //скрываем через 2 сек
+                                //Через пол секунды убрать окно и выполнить функцию
+                                .fadeOut(500, function(){
+                                    
+                                    $('input#name, input#email, textarea#comment').val(''); //очищаем поля формы
+                                    
+                                    //если статус равен false(0), то не отображаем новый комментарий до модерации
+                                    if(html.data.status === false) {
 
-                            //Через пол секунды убрать окно и выполнить функцию
-                            .fadeOut(500, function () {
+                                        wrap_result.html('<strong>Комментарий появится после проверки администратором</strong><br>').show(500);                                           
+                                        setTimeout(function() { wrap_result.hide('slow'); }, 3000); //скрываем через 3 сек   
 
-                                $('input#name, input#email, textarea#comment').val(''); //очищаем поля формы
+                                        //имитируем нажатие кнопки отмены ответа на комментарий для возврата формы вниз
+                                        $('#cancel-comment-reply-link').click();                                           
+                                        return;
+                                    }
 
-                                //если статус равен false(0), то не отображаем новый комментарий до модерации
-                                if (html.data.status === false) {
+                                    //если это дочерний комментарий
+                                    if(html.data.parent_id >0){
+                                        //получаем элемент предыдущий перед формой добавления комментария
+                                        comParent.parents('div#respond').prev()
+                                        //вставляем после него результат вывода шаблона
+                                        .after('<ul class="children">'+ html.comment + '</ul>')
 
-                                    wrap_result.html('<strong>Комментарий появится после проверки администратором</strong><br>').show(500);
-                                    setTimeout(function () {
-                                        wrap_result.hide('slow');
-                                    }, 3000); //скрываем через 3 сек
+                                        //если это родительский комментарий
+                                    } else {
+                                        //это не первый комментерий
+                                        if($.contains('#comments', 'ol.commentlist')){
+                                            $('ol.commentlist').append(html.comment);
+                                        //самый первый комментарий
+                                        } else {
+                                            $('#respond').before('<div id="comments"><ol class="commentlist group">' + html.comment + '</ol></div>');
+                                        }
+                                    }
 
                                     //имитируем нажатие кнопки отмены ответа на комментарий для возврата формы вниз
                                     $('#cancel-comment-reply-link').click();
-                                    return;
-                                }
+                                })
 
-                                //если это дочерний комментарий
-                                if (html.data.parent_id > 0) {
-                                    //получаем элемент предыдущий перед формой добавления комментария
-                                    comParent.parents('div#respond').prev()
-                                    //вставляем после него результат вывода шаблона
-                                        .after('<ul class="children">' + html.comment + '</ul>')
 
-                                    //если это родительский комментарий
-                                } else {
-                                    //это не первый комментерий
-                                    if ($.contains('#comments', 'ol.commentlist')) {
-                                        $('ol.commentlist').append(html.comment);
-                                        //самый первый комментарий
-                                    } else {
-                                        $('#respond').before('<div id="comments"><ol class="commentlist group">' + html.comment + '</ol></div>');
-                                    }
-                                }
-
-                                //имитируем нажатие кнопки отмены ответа на комментарий для возврата формы вниз
-                                $('#cancel-comment-reply-link').click();
-                            }) else {
-                            $('.wrap_result').css('color', 'red').append('<br><strong>Ошибка: </strong>' + html.error.join('<br>'))
-                            $('.wrap_result').delay(3000).fadeOut(1000);
+                        //Если ошибка
+                        } else {
+                             $('.wrap_result').css('color', 'red').append('<br><strong>Ошибка: </strong>' + html.error.join('<br>'))
+                             $('.wrap_result').delay(3000).fadeOut(1000);
                         }
                     },
 
