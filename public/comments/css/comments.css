@@ -9,15 +9,13 @@ body{
     margin: 0 0 2em 0;
     padding: 0;
     list-style-type: none!important;
-	margin-left: 0 !important;
 }
 li, ul, ol {
     color: #585555;
     font-family: 'Droid Sans', sans-serif;
     font-size: 12px;
     font-weight: normal;
-	color: #585555;
-    font-style: normal;
+	font-style: normal;
 }
 ol.commentlist, li.comment {
     clear: both;

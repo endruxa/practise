@@ -31,7 +31,7 @@ jQuery(document).ready(function($){
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                       },
                     success: function(html){
-                                                                                                            
+
                         if(html.success) wrap_result.append('<br><strong>Сохранено!</strong><br>')
                             .delay(2000) //скрываем через 2 сек
 
