@@ -1,38 +1,26 @@
 @extends('welcome')
 
-@section('title', $article->meta_title)
-@section('meta_keyword', $article->meta_keyword)
-@section('meta_description', $article->meta_description)
-
-@section('css')
-    @parent
-
-
-@endsection
-
 @section('content')
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h2>{{$article->title}}</h2>
-                <p>{!! $article->description !!}</p>
-                <p class="post-meta">Created by<a href="#"><br></a>{{$article->created_at}}</p>
+    <header class="masthead">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="post-heading">
+                            <h1>{!! $article->title !!}</h1>
+                            <h2 class="subheading">{!! $article->description_short !!}</h2>
+                            <span class="meta">Created in {{$article->created_at->format('H:i d/m/Y')}}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
+    </header>
 @endsection
 
 @section('comments')
 
     @include('comments.comments_block', ['essence' => $article])
-
-@endsection
-
-@section('js')
-    @parent
-    <!-- Comments -->
-
 
 @endsection
