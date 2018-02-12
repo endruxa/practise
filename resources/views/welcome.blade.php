@@ -12,21 +12,21 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title', config('app.name'))</title>
 
+@section('css')
         <!-- Bootstrap Core CSS -->
-        <link rel="stylesheet" href="{{asset('/css/app.css')}}" >
-        <link rel="stylesheet" href="{{asset('/vendor/bootstrap/css/bootstrap.min.css')}}" >
+        <link rel="stylesheet" media="all" href="{{asset('/vendor/bootstrap/css/bootstrap.min.css')}}" type="text/css" >
         <!-- Theme CSS -->
-        <link rel="stylesheet" href="{{asset('/css/clean-blog.min.css')}}" >
+        <link rel="stylesheet" media="all" href="{{asset('/css/clean-blog.min.css')}}" type="text/css">
         <!-- Custom Fonts -->
-        <link rel="stylesheet" type="text/css" href="{{asset('/vendor/font-awesome/css/font-awesome.min.css')}}" >
-        <link rel="stylesheet" type="text/css" href="{{asset('/vendor/https/family-lora.css')}}" >
-        <link rel="stylesheet" type="text/css" href="{{asset('/vendor/https/family-open.css')}}" >
-        <link rel="stylesheet" type="text/css" href="{{asset('/comments/css/comments.css')}}" >
-        <link rel="shortcut icon" type="image/png" href="{{ asset('/vendor/laravel-filemanager/img/folder.png') }}" >
+        <link rel="stylesheet" media="all" href="{{asset('/vendor/font-awesome/css/font-awesome.min.css')}}" type="text/css">
+        <link rel="stylesheet" media="all" href="{{asset('/vendor/https/family-lora.css')}}" type="text/css">
+        <link rel="stylesheet" media="all" href="{{asset('/vendor/https/family-open.css')}}" type="text/css">
+@show
+
 
     </head>
-
 <body>
+
 <div id="app">
     @include('layouts.header')
     @include('layouts.background_image')
@@ -45,9 +45,9 @@
     <script src="{{asset('/js/jqBootstrapValidation.js')}}"></script>
     <script src="{{asset('/js/contact_me.js')}}"></script>
     <!-- Theme JavaScript -->
+    {{--<script src="{{asset('/js/app.js')}}"></script>--}}
     <script src="{{asset('/js/clean-blog.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('/comments/js/comment-reply.js')}}" ></script>
-    <script type="text/javascript" src="{{asset('/comments/js/comment-scripts.js')}}" ></script>
+
 @show
 
 </body>

@@ -7,10 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name'))</title>
-    <link rel="stylesheet" href={{asset('/css/alertify.css')}} id="alertifyCSS">
+
     <!-- Styles -->
-    <link href="{{asset('/css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/vendor/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href={{asset('/css/alertify.css')}} id="alertifyCSS">
+
 </head>
 <body>
 @include('admin.layouts.parts.navbar')
