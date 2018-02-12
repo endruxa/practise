@@ -20,8 +20,8 @@
 @endsection
 @section('css')
     @parent
-   {{-- <link rel="stylesheet" media="all" href="{{asset('css/app.css')}}" type="text/css">--}}
-    <link rel="stylesheet" media="all" href="{{asset('comments/css/comments.css')}}" type="text/css">
+    <link rel="stylesheet" media="all" href="{{asset('css/app.css')}}" type="text/css">
+    <link rel="stylesheet"  href="{{asset('/comments/css/comments.css')}}" type="text/css">
 @stop
 @section('comments')
 <div class="container">
@@ -32,6 +32,6 @@
 @section('js')
     @parent
    {{-- <script type="text/javascript" src="{{asset('js/app.js')}}"></script>--}}
-    <script type="text/javascript" src="{{asset('comments/js/comment-reply.js')}}"></script>
-    <script type="text/javascript" src="{{asset('comments/js/comment-scripts.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/comments/js/comment-reply.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/comments/js/comment-scripts.js')}}"></script>
 @stop
