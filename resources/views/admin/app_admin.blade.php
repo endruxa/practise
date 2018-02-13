@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('/vendor/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href={{asset('/css/alertify.css')}} id="alertifyCSS">
 
+
 </head>
 <body>
 @include('admin.layouts.parts.navbar')
@@ -31,7 +32,8 @@
 <!-- Theme JavaScript -->
 <script src="{{asset('/js/clean-blog.min.js')}}"></script>
 <!-- Alertify -->
-<script src={{asset('/js/alertify.js')}}></script>
+<script src="{{asset('/dist/sweetalert.min.js')}}"></script>
+<script src="{{asset('/js/alertify.js')}}"></script>
 @include('inc.message')
 </body>
 </html>

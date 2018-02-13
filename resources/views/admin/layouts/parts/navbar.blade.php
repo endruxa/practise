@@ -19,8 +19,8 @@
                         <a href="{{route('home')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Блог
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{route('category.index')}}">Категории</a> </li>
-                            <li><a href="{{route('article.index')}}">Материалы</a> </li>
+                            <li><a href="{{route('admin.category.index')}}">Категории</a> </li>
+                            <li><a href="{{route('admin.article.index')}}">Материалы</a> </li>
                         </ul>
                     </li>
                     <li class="dropdown">

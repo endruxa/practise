@@ -12,7 +12,7 @@
 
 <hr>
 
-<a href="{{route('category.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Создать категорию</a>
+<a href="{{route('admin.category.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Создать категорию</a>
     <table class="table table-striped">
         <thead>
         <th>Наименование</th>
@@ -25,13 +25,11 @@
             <td>{{$category->title}}</td>
             <td>{{$category->published}}</td>
             <td class="text-right">
-                <form onsubmit="if(confirm('Удалить?')){ return true} else { return false }" action="{{route('category.destroy',
+                <form onsubmit="if(confirm('Удалить?')){ return true} else { return false }" action="{{route('admin.category.destroy',
                 $category)}}" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                     {{csrf_field()}}
-
-                    <a class="btn btn-default" href="{{route('category.edit', $category)}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
-
+                    <a class="btn btn-default" href="{{route('admin.category.edit', ['id' =>$category->id])}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                     <button type="submit" class="btn"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </form>
             </td>

@@ -55,7 +55,6 @@ class ArticleController extends Controller
 
             DB::commit();
             \session()->flash('success', 'Новость успешно добавлена!');
-
         }catch ( \Exception $e){
 
             DB::rollBack();
