@@ -99,9 +99,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        try{
+            $this->validate($request, [
+                'title'     => 'required|string|min:4|max:20',
+                'parent_id' => 'integer',
+                'published' => 'integer'
+            ]);
+
         $category->update($request->except('slug'));
 
+        \session()->flash('success', 'Категория успешно отредактирована');
 
+        }catch (\Exception $e){
+
+        \session()->flash('error', $e->getMessage());
+        return back()->withInput();
+        }
         return redirect()->route('category.index');
     }
 
