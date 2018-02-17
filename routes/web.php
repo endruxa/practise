@@ -33,17 +33,17 @@ Route::get('/blog/article/{slug}', 'BlogController@article')->name('article');
 
 //Admin panel
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function (){
-    Route::group(['middleware' => 'admin'], function (){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function (){
+    Route::group(['middleware' => 'admin'], function(){
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
 
     Route::resource('/category', 'CategoryController', ['as' => 'admin']);
     Route::resource('/article', 'ArticleController', ['as' => 'admin']);
-    });
 
-    Route::group(['prefix' => 'users'], function(){
+    Route::group(['prefix' => 'users', 'namespace' => 'Admin'], function(){
         Route::resource('/user', 'UserController', ['as' => 'admin.users']);
     });
+  });
 });
 
 

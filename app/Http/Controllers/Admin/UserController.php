@@ -27,7 +27,11 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::create();
+
+        return view('admin.users.create', [
+            'users' => $users
+        ]);
     }
 
     /**

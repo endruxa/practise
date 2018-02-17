@@ -14,7 +14,7 @@
 
     <hr>
     @include('errors._form_errors')
-        <form class="form-horizontal" action="{{route('admin.category.store', $category)}}" method="post">
+        <form class="form-horizontal" action="{{route('admin.category.store')}}" method="post">
                  {{csrf_field()}}
     @include('admin.categories.parts._form')
             <input type="hidden" name="created_by" value="{{Auth::id()}}">

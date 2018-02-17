@@ -22,7 +22,7 @@
                     <td>{{$user->email}}</td>
                     <td class="text-right">
                         <form onsubmit="if(confirm('Удалить?')){ return true} else { return false }" action="{{route('admin.users.user.destroy',
-                $user->id)}}" method="post">
+                $user)}}" method="post">
                             {{method_field('DELETE')}}
                             {{csrf_field()}}
 

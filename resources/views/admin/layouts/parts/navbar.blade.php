@@ -14,7 +14,9 @@
             <!-- Admin menu -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('admin.index')}}">Панель состояния</a></li>
+                    <li>
+                        <a href="{{route('admin.index')}}">Панель состояния</a>
+                    </li>
                     <li class="dropdown">
                         <a href="{{route('home')}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Блог
                             <span class="caret"></span></a>

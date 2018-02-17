@@ -46,12 +46,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         try{
-            $this->validate($request, [
-                'title'     => 'required|string|min:4|max:20',
-                'parent_id' => 'integer',
-                'published' => 'integer'
+            $request->validate([
+                'title' => 'required|string|min:4|max:20',
             ]);
-
             DB::beginTransaction();
             Category::create($request->all());
             DB::commit();
@@ -59,9 +56,9 @@ class CategoryController extends Controller
         }catch (\Exception $e){
             DB::rollBack();
             \session()->flash('error', 'Категория не добавлена!');
-            return back()->withInput()->withErrors($e->getMessage());
+            return back()->withErrors($e->getMessage())->withInput();
         }
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 
 
@@ -101,9 +98,7 @@ class CategoryController extends Controller
     {
         try{
             $this->validate($request, [
-                'title'     => 'required|string|min:4|max:20',
-                'parent_id' => 'integer',
-                'published' => 'integer'
+                'title' => 'required|string|min:4|max:20',
             ]);
 
         $category->update($request->except('slug'));
@@ -115,7 +110,7 @@ class CategoryController extends Controller
         \session()->flash('error', $e->getMessage());
         return back()->withInput();
         }
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -128,6 +123,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 }

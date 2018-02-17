@@ -1,9 +1,10 @@
-@foreach($categories as $category_list)
+@foreach($categories as $category_list)//для перебора коллекции categories
 
+//значение id категории лил ничего
  <option value="{{$category_list->id or ""}}"
-         {{--Редактирование категории--}}
+         {{--Редактирование категории, если сущ-т id, значит редактирование--}}
     @isset($category->id)
-    {{--Проверка на отношение к родительской категории--}}
+    {{--Проверка на отношение к родительской категории, если равно, значит родительская категория--}}
     @if($category->parent_id == $category_list->id)
         selected= ""
     @endif

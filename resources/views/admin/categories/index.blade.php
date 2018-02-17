@@ -26,10 +26,10 @@
             <td>{{$category->published}}</td>
             <td class="text-right">
                 <form onsubmit="if(confirm('Удалить?')){ return true} else { return false }" action="{{route('admin.category.destroy',
-                $category)}}" method="post">
+               $category)}}" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                     {{csrf_field()}}
-                    <a class="btn btn-default" href="{{route('admin.category.edit', ['id' =>$category->id])}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a class="btn btn-default" href="{{route('admin.category.edit', $category)}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                     <button type="submit" class="btn"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </form>
             </td>

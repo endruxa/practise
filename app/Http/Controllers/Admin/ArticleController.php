@@ -19,7 +19,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'desc')->paginate(2);
+        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.articles.index', [
             'articles' => $articles
         ]);
@@ -47,7 +47,7 @@ class ArticleController extends Controller
     {
         try {
             DB::beginTransaction();
-            $request['user_id'] = $request->user()->id;
+            /*$request['user_id'] = $request->user()->id;*/
             $article = Article::create($request->all());
             //Categories
             if($request->input('categories')) : $article->categories()->attach(($request->input('categories')));
@@ -62,7 +62,7 @@ class ArticleController extends Controller
 
             return back()->withInput();
         }
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.article.index');
     }
 
     /**
@@ -111,7 +111,7 @@ class ArticleController extends Controller
             \session()->flash('error', 'Ошибка редактирования');
             return back()->withInput();
         }
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.article.index');
 
     }
 
@@ -126,7 +126,7 @@ class ArticleController extends Controller
         $article->categories()->detach();
         $article->delete();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.article.index');
 
     }
 }

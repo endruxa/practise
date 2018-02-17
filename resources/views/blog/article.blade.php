@@ -1,5 +1,9 @@
 @extends('welcome')
 
+@section('title', $article->meta_title)
+@section('meta_keyword', $article->meta_keyword)
+@section('meta_description', $article->meta_description)
+
 @section('content')
 
     <header class="masthead">

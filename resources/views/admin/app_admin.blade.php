@@ -18,7 +18,6 @@
 </head>
 <body>
 @include('admin.layouts.parts.navbar')
-
 <div id="app">
     @yield('content')
 </div>

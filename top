@@ -1,0 +1,311 @@
+[33mcommit 983fa72a5effc7ffaebc23efd60d88a76129d4a0[m[33m ([m[1;36mHEAD -> [m[1;32malertify[m[33m)[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Tue Feb 13 22:58:12 2018 +0300
+
+    resource_controller
+
+[33mcommit d6522fac65c357d42cee009be8aa61aed460ac42[m[33m ([m[1;31morigin/alertify[m[33m)[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Tue Feb 13 12:20:49 2018 +0300
+
+    categories_validte
+
+[33mcommit f3d8c68ae0104e1e6da1f0946334681894ea8a01[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Feb 12 23:51:58 2018 +0300
+
+    css_clean_blog
+
+[33mcommit a44c1905427a60cc42f7c29071bd79c8becb6202[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Feb 12 23:25:18 2018 +0300
+
+    style_of_comments
+
+[33mcommit 82b2e9c081a07f97a076771c62abb742eb64730a[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Feb 12 17:37:54 2018 +0300
+
+    some_styles
+
+[33mcommit b586ab7594ad4c3f1e0aefa3412aab04f52cdd59[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Feb 11 22:09:44 2018 +0300
+
+    comment_article_jquery
+
+[33mcommit b1c6f23c34c2b5eed758ca7020d6791102b4a674[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Feb 11 11:27:11 2018 +0300
+
+    css_comments
+
+[33mcommit 0be67af211c8476f5ae86f9e25cfb803be2d761e[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Feb 11 00:18:00 2018 +0300
+
+    comments_articles
+
+[33mcommit a246f9eec7f2da37c6cacf7e871322893159b6fd[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Thu Feb 8 22:27:52 2018 +0300
+
+    admin_authenticated
+
+[33mcommit dd7253c08facefe0a7d992d3339e88d690618c6f[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Fri Feb 2 23:51:38 2018 +0300
+
+    edit_success
+
+[33mcommit 02e24e268421dc282587fd6bcd317dcb3e1b9e75[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 31 21:58:23 2018 +0300
+
+    articles_view
+
+[33mcommit 9d031086ffcd1c295c9f06a253c74833da37ce6c[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 29 22:00:23 2018 +0300
+
+    ckeditor_with_description
+
+[33mcommit ea4286a43be25d0edaa47b9a07ae60eac83c442b[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 29 21:25:00 2018 +0300
+
+    ckeditor
+
+[33mcommit d52924286f42a5279641887af9501527fa2b3de4[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 29 16:59:56 2018 +0300
+
+    alertify
+
+[33mcommit a6bfbbc3559d64147e51ae8adfa863f720d86607[m[33m ([m[1;31morigin/work[m[33m, [m[1;32mwork[m[33m)[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 28 00:38:52 2018 +0300
+
+    success
+
+[33mcommit 342d403fcf2e4246e05e16a1fcae9e78b8ed6605[m[33m ([m[1;32mroutes[m[33m)[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sat Jan 27 22:38:08 2018 +0300
+
+    something
+
+[33mcommit 80cffd11fe4738ea4f9cfcca1a44676c0f7b21c1[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sat Jan 27 19:31:11 2018 +0300
+
+    validation_success
+
+[33mcommit bb7b269b1315ebb2e5248f7c60eea6f4dc6fec13[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Fri Jan 26 21:20:33 2018 +0300
+
+    user_menu
+
+[33mcommit 24a0d34802922f7e18678f71ba41aabefcfe799f[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Fri Jan 26 19:11:57 2018 +0300
+
+    new_layouts
+
+[33mcommit b8218c3ef9b6b28f59190a62331e9919d94e9c46[m
+Author: Andrey <nesterov.andrey.a@gmail.com>
+Date:   Mon Jan 22 21:58:19 2018 +0300
+
+    install_chat
+
+[33mcommit aa1d9a80b4ff5c2513d506f000c45091151bfee6[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 21 23:49:55 2018 +0300
+
+    validate
+
+[33mcommit 1f11ddd67b558200316e1fa3af36d866d73b7124[m[33m ([m[1;31morigin/routes[m[33m)[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 21 23:40:40 2018 +0300
+
+    New_routing
+
+[33mcommit 1306b1f80ae901633065a6e657c3b1d6efc1ade2[m[33m ([m[1;32mvalidate[m[33m)[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 21 00:06:19 2018 +0300
+
+    new_routes
+
+[33mcommit 075d04deab33ff6f5ade784c92d4f8b776ef7827[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 17 22:09:18 2018 +0300
+
+    change_article_controller
+
+[33mcommit 1cc88e50ac63c09c03fe114c06bb08ce91c9019e[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Tue Jan 16 22:54:28 2018 +0300
+
+    form_errors
+
+[33mcommit a8181355b5d5683fcd9e5a8616047b9b3cb1c4b7[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 15 22:02:36 2018 +0300
+
+    font_awesome
+
+[33mcommit c8ddd3fed1478acf8f2ba754555b67ae856d08bf[m[33m ([m[1;31morigin/validate[m[33m)[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 15 21:49:31 2018 +0300
+
+    change_article_parts_categories
+
+[33mcommit ffa64d81ace890addf1fff8225a7b97af0244e7a[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 15 19:50:34 2018 +0300
+
+    font-awesome
+
+[33mcommit 55d0d2a5c61de1eae50cef5f8c00dcbdcd331488[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 14 19:24:28 2018 +0300
+
+    all_good
+
+[33mcommit b8dca953342a21ddc0350f494aef245bf0fbb6b5[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 14 18:22:28 2018 +0300
+
+    some_problems
+
+[33mcommit 8455d43eb8681809a8ee4b16ee3a733277d909d1[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 14 15:40:56 2018 +0300
+
+    factory_of_migrations
+
+[33mcommit 4a6489f02b0f585317f2f0d2a4360baa5f9ada8f[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 14 00:50:36 2018 +0300
+
+    factories
+
+[33mcommit d120e92a8f1921a71c30e99e39612e58c25346ca[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 10 22:07:23 2018 +0300
+
+    error_with_ckeditor
+
+[33mcommit 4769a155dfcbd9d5993d324d49ecdd6373292804[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 10 20:29:32 2018 +0300
+
+    fileupload_ckeditor
+
+[33mcommit 5eed53f4decff61f9a66078c274e94b94c55b907[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 10 19:36:53 2018 +0300
+
+    fixed_bug_blogcontroller
+
+[33mcommit ba865b4c4f9a32ee1764c89c262c6d418f591f0d[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 8 21:46:49 2018 +0300
+
+    function_flash
+
+[33mcommit acd27484a120e24ccb9a1fc479b2c6db59f85fa1[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 8 19:56:18 2018 +0300
+
+    Article@store
+
+[33mcommit 1be9cef8849027b0769da8b2634c55f0a821f99a[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Mon Jan 8 17:40:49 2018 +0300
+
+    get_category_id_attribute
+
+[33mcommit 760ff748636b2b67630045e58760c9eb300a3125[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 7 23:06:37 2018 +0300
+
+    dashboard_controller
+
+[33mcommit 3ddc27a58b132e48bca6c985da98222ae7d80065[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sun Jan 7 18:55:18 2018 +0300
+
+    change_articles_create
+
+[33mcommit 481cd3ac1fb4638c9da152a9da85068bdc3aa1ba[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Fri Jan 5 21:49:26 2018 +0300
+
+    new_structure_db
+
+[33mcommit f85e770cd29add8e681d18394f593bab93dc144d[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 21:42:30 2018 +0300
+
+    role_relations
+
+[33mcommit 9a74b89c6f6083bd5d8910c102109da289e33af9[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 21:03:51 2018 +0300
+
+    migration_article_table
+
+[33mcommit f17c584df86b541a54bffe8265da1a9151e34bda[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 20:34:56 2018 +0300
+
+    admin_middleware
+
+[33mcommit 003ad83eaceb9fccc2d4ead71494900997cf35bb[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 20:27:56 2018 +0300
+
+    admin_access
+
+[33mcommit 922316d3dc8337f1e5d5c2de8d571990daf7979c[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 19:34:21 2018 +0300
+
+    change
+
+[33mcommit a57cec5236a0c8d15eb316fadd524575693af3d9[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 17:46:00 2018 +0300
+
+    rules_validation
+
+[33mcommit abc320821f52b6d87facf327db81bc94584cb490[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 14:44:23 2018 +0300
+
+    work_example
+
+[33mcommit 99995802a73108e646ad0eabeefc9fa0be8a7e2e[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Wed Jan 3 00:52:58 2018 +0300
+
+    make_seeds
+
+[33mcommit ecf937d8c592d4c10bac66ddebd6364627a3df47[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Tue Jan 2 21:43:20 2018 +0300
+
+    laravel_file_uploader
+
+[33mcommit aa98454a27c4a7d37acd22cfd4a33eb250fdd050[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Sat Dec 30 15:55:25 2017 +0300
+
+    chage
+
+[33mcommit 55c55a17207893b5048eb1e8c650f6b68de3a51a[m
+Author: Andrey <drunhouse2mail.ru>
+Date:   Fri Dec 29 21:50:57 2017 +0300
+
+ 

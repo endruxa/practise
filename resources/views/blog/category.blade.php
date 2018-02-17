@@ -1,7 +1,12 @@
 @extends('welcome')
 
-@section('title', $category->title)
-
+@section('title')
+{{$category->title}}
+    {{--<ol class="breadcrumb">
+        <li><a href="{{route('home')}}">{{$category}}</a></li>
+        <li class="active">{{$active}}</li>
+    </ol>--}}
+@endsection
 @section('content')
 
     <div class="container">

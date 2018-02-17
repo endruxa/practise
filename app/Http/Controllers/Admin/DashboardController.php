@@ -12,8 +12,8 @@ class DashboardController extends Controller
     public function dashboard(){
         $categories = Category::lastCategories(5);
         $articles = Article::lastArticles(5);
-        $count_categories  = $categories->count();
-        $count_articles  = $articles->count();
+        $count_categories  = Category::count();
+        $count_articles  = Article::count();
         return view('admin.layouts.dashboard', [
             'categories' => $categories,
             'articles' => $articles,
