@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::resource('/category', 'CategoryController', ['as' => 'admin']);
     Route::resource('/article', 'ArticleController', ['as' => 'admin']);
 
-    Route::group(['prefix' => 'users', 'namespace' => 'Admin'], function(){
+    Route::group(['prefix' => 'users'], function(){
         Route::resource('/user', 'UserController', ['as' => 'admin.users']);
     });
   });
