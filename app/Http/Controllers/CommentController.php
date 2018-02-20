@@ -11,7 +11,6 @@ use App\Article;
 
 class CommentController extends Controller
 {
-
     /**
      * Обработка формы - AJAX
      *
@@ -20,7 +19,6 @@ class CommentController extends Controller
      */
 	public function store(Request $request)
     {
-
 		$data = $request->except('_token', 'comment_article_id', 'comment_parent');
 		
 		//добавляем поля с названиями как в таблице (модели)
@@ -29,7 +27,6 @@ class CommentController extends Controller
 		
 		//устанавливаем статус в зависимости от настройки
 		$data['status'] = config('comments.show_immediately');
-
 
 		$user = Auth::user();
 
@@ -48,25 +45,19 @@ class CommentController extends Controller
 
 		$comment = new Comment($data); 
 
-
 		if ($validator->fails()) {
 			return response()->json(['error'=>$validator->errors()->all()]);
 		}
-		
 
 		$post = Article::find($data['article_id']);
 
 		$post->comments()->save($comment);
-		
 
 		$data['id'] = $comment->id;
 		$data['hash'] = md5($data['email']);
 		$data['status'] = config('comments.show_immediately');
-		
 
 		$view_comment = view(env('THEME').'.comments.new_comment')->with('data', $data)->render();
-
         return response()->json(['success'=>true, 'comment'=>$view_comment, 'data'=>$data]);
-
 	}
 }

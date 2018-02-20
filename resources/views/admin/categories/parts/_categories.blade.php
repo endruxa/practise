@@ -1,6 +1,6 @@
 @foreach($categories as $category_list)//для перебора коллекции categories
 
-//значение id категории лил ничего
+//значение id категории или ничего
  <option value="{{$category_list->id or ""}}"
          {{--Редактирование категории, если сущ-т id, значит редактирование--}}
     @isset($category->id)

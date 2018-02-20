@@ -10,11 +10,12 @@ use App\Comment;
 
 class Article extends Model
 {
+    protected $table = "articles";
+
     protected $fillable = ['title', 'slug','description_short', 'description', 'meta_title', 'meta_description',
         'meta_keyword', 'published', 'created_by', 'modified_by', 'user_id'];
 
     //Mutators
-
     /**
      * @param $value
      */
@@ -23,12 +24,10 @@ class Article extends Model
         $this->attributes['slug'] = Str::slug(mb_substr($this->title, 0, 40). " - " . Carbon::now()->format('d-m-y-H-i'));
     }
 
-
     public function scopeLastArticles($query, $count)
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
-
 
     public function getCategoryIdAttribute()
     {
@@ -52,5 +51,4 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class, 'article_id');
     }
-
 }

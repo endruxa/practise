@@ -31,6 +31,7 @@ class User extends Authenticatable
     const ROLE_USER = 1;
     const ROLE_ADMIN = 2;
 
+    protected $table = "users";
     /**
      * The attributes that are mass assignable.
      *
@@ -54,5 +55,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-
 }

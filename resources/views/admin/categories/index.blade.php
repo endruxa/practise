@@ -3,15 +3,12 @@
 @section('content')
 
 <div class="container">
-
     @component('admin.components._breadcrumb')
         @slot('title') Список категорий @endslot
         @slot('parent') Главная @endslot
         @slot('active') Категории @endslot
     @endcomponent
-
 <hr>
-
 <a href="{{route('admin.category.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Создать категорию</a>
     <table class="table table-striped">
         <thead>
@@ -51,5 +48,4 @@
         </tfoot>
     </table>
 </div>
-
 @endsection
