@@ -12,17 +12,13 @@
 
 @endphp
 
-
 <div class="wrap_result"></div>
 
-
 <div id="comments">
-
 	<ol class="commentlist group">
 		@if($com)
 		@foreach($com as $k => $comments)
 			<!--Выводим только родительские комментарии parent_id = 0-->
-			
 			@if($k)
 				@break
 			@endif
@@ -32,8 +28,6 @@
 		@endforeach
 		@endif
 	</ol>
-	
-
 
 	<div id="respond">
 		<h3 id="reply-title">Написать <span>комментарий</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">Отменить ответ</a></small></h3>
@@ -55,5 +49,4 @@
 		</form>
 	</div>
 	
-</div>
 </div>

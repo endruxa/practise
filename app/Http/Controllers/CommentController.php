@@ -21,7 +21,7 @@ class CommentController extends Controller
 		
 		//добавляем поля с названиями как в таблице (модели)
 		$data['article_id'] = $request->input('comment_article_id');
-		$data['parent_id'] = $request->input('comment_parent');
+		$data['parent_id']  = $request->input('comment_parent');
 		
 		//устанавливаем статус в зависимости от настройки
 		$data['status'] = config('comments.show_immediately');
@@ -30,15 +30,15 @@ class CommentController extends Controller
 
 		if($user) {
 			$data['user_id'] = $user->id;
-			$data['name'] = (!empty($data['name'])) ? $data['name'] : $user->name;
+			$data['name']  = (!empty($data['name'])) ? $data['name'] : $user->name;
 			$data['email'] = (!empty($data['email'])) ? $data['email'] : $user->email;								
 		}
 
 		$validator = Validator::make($data,[
 			'article_id' => 'integer|required',
-			'text' => 'required|max:255',
-			'name' => 'required|min:2|max:15',
-			'email' => 'required|email',
+			'text'       => 'required|max:255',
+			'name'       => 'required|min:2|max:15',
+			'email'      => 'required|email',
 		]);
 
 		$comment = new Comment($data); 

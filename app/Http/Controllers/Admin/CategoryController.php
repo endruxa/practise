@@ -101,7 +101,7 @@ class CategoryController extends Controller
 
         $category->update($request->except('slug'));
 
-        \session()->flash('success', 'Категория успешно отредактирована');
+        \session()->flash('success', 'Категория успешно отредактирована!');
 
         }catch (\Exception $e){
 
