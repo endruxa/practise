@@ -112,7 +112,6 @@ class ArticleController extends Controller
             return back()->withInput();
         }
         return redirect()->route('admin.article.index');
-
     }
 
     /**
@@ -127,6 +126,5 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect()->route('admin.article.index');
-
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class Category extends Model
 {
+    protected $table = "categories";
     protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
     public function setSlugAttribute($value)
@@ -30,5 +31,4 @@ class Category extends Model
     {
         return $query->orderBy('created_at', 'desc')->take($count)->get();
     }
-
 }

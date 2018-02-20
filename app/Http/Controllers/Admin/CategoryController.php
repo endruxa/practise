@@ -20,7 +20,6 @@ class CategoryController extends Controller
         return view('admin.categories.index', [
             'categories' => $categories
         ]);
-
     }
 
     /**
@@ -60,7 +59,6 @@ class CategoryController extends Controller
         }
         return redirect()->route('admin.category.index');
     }
-
 
     /**
      * Display the specified resource.

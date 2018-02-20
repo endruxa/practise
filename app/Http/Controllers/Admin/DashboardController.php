@@ -21,5 +21,4 @@ class DashboardController extends Controller
             'count_articles' => $count_articles
         ]);
     }
-
 }

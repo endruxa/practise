@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,12 +23,10 @@ Route::get('/home/about', 'HomeController@about')->name('about');
 Route::get('/home/post', 'HomeController@post')->name('post');
 Route::get('/home/contact', 'HomeController@contact')->name('contact');
 
-
 //Users
 
 Route::get('/blog/category/{slug}', 'BlogController@category')->name('category');
 Route::get('/blog/article/{slug}', 'BlogController@article')->name('article');
-
 
 //Admin panel
 
@@ -40,12 +37,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::resource('/category', 'CategoryController', ['as' => 'admin']);
     Route::resource('/article', 'ArticleController', ['as' => 'admin']);
 
-    Route::group(['prefix' => 'users', 'namespace' => 'Admin'], function(){
+    Route::group(['prefix' => 'users'], function(){
         Route::resource('/user', 'UserController', ['as' => 'admin.users']);
     });
   });
 });
-
 
 //CKEditor
 

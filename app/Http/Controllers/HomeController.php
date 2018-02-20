@@ -13,7 +13,6 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -29,16 +28,13 @@ class HomeController extends Controller
         return view('layouts.home.about');
     }
 
-
     public function post()
     {
         return view('layouts.home.post');
     }
 
-
     public function contact()
     {
         return view('layouts.home.contact');
     }
-
 }
