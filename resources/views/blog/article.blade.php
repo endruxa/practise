@@ -14,7 +14,8 @@
                         <div class="post-heading">
                             <h1>{!! $article->title !!}</h1>
                             <h2 class="subheading">{!! $article->description_short !!}</h2>
-                            <span class="meta">Created in {{$article->created_at->format('H:i d/m/Y')}}</span>
+                            <p>{!! $article->description !!}</p>
+                            <span class="meta">Created {{$article->created_at->format('H:i d/m/Y')}}</span>
                         </div>
                     </div>
                 </div>
