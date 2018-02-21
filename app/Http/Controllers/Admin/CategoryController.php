@@ -48,11 +48,14 @@ class CategoryController extends Controller
             $request->validate([
                 'title' => 'required|string|min:4|max:20',
             ]);
+
             DB::beginTransaction();
             Category::create($request->all());
+
             DB::commit();
             \session()->flash('success', 'Категория  успешно добавлена!');
         }catch (\Exception $e){
+
             DB::rollBack();
             \session()->flash('error', 'Категория не добавлена!');
             return back()->withErrors($e->getMessage())->withInput();
@@ -99,14 +102,16 @@ class CategoryController extends Controller
                 'title' => 'required|string|min:4|max:20',
             ]);
 
-        $category->update($request->except('slug'));
-
-        \session()->flash('success', 'Категория успешно отредактирована!');
+            DB::beginTransaction();
+            $category->update($request->except('slug'));
+            DB::commit();
+            \session()->flash('success', 'Категория успешно отредактирована!');
 
         }catch (\Exception $e){
 
-        \session()->flash('error', $e->getMessage());
-        return back()->withInput();
+            DB::rollBack();
+            \session()->flash('error', $e->getMessage());
+            return back()->withInput();
         }
         return redirect()->route('admin.category.index');
     }

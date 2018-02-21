@@ -46,7 +46,7 @@ class ArticleController extends Controller
     public function store(ArticleRequestController $request)
     {
         try {
-            DB::beginTransaction();
+            DB::beginTransaction();//ручное использование транзакций
             $request['user_id'] = $request->user()->id;
             $article = Article::create($request->all());
             //Categories
@@ -55,7 +55,7 @@ class ArticleController extends Controller
 
             DB::commit();
             \session()->flash('success', 'Новость успешно добавлена!');
-        }catch ( \Exception $e){
+        }catch ( \Exception $e) {
             DB::rollBack();
             \session()->flash('error', 'Новость не добавлена!');
             return back()->withInput();
@@ -98,14 +98,17 @@ class ArticleController extends Controller
     public function update(ArticleRequestController $request, Article $article)
     {
         try{
-        $article->update($request->except('slug'));
-        $article->categories()->detach();
-        //Categories
-        if($request->input('categories')) : $article->categories()->attach($request->input('categories'));
-        endif;
-        \session()->flash('success', 'Новость успешно отредактирована!');
-        }catch (\Exception $e)
-        {
+            DB::beginTransaction();
+            $article->update($request->except('slug'));
+            $article->categories()->detach();
+            //Categories
+            if($request->input('categories')) : $article->categories()->attach($request->input('categories'));
+            endif;
+
+            DB::commit();
+            \session()->flash('success', 'Новость успешно отредактирована!');
+        }catch (\Exception $e) {
+            DB::rollBack();
             \session()->flash('error', 'Ошибка редактирования');
             return back()->withInput();
         }
