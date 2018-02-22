@@ -6,6 +6,7 @@ use App\Article;
 use App\Category;
 use App\Http\Requests\ArticleRequestController;
 use App\Http\Controllers\Controller;
+use Gate;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Session;
@@ -30,6 +31,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        if(Gate::denies('create-article'))
+        {
+            return redirect()->back()->with(['messge' => 'У Вас нет прав!']);
+        }
         $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [
             'article'    => collect(),
