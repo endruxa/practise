@@ -10,8 +10,7 @@ use Gate;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Session;
-use App\Http\Controllers\Admin\AdminUploadImages;
-class ArticleController extends Controller
+class AdminArticleController extends Controller
 {
     /**
      * Display a listing of the resource.

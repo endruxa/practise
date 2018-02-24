@@ -6,7 +6,7 @@ use App\Article;
 use App\Category;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class AdminDashboardController extends Controller
 {
     //Dashboard
     public function dashboard(){
@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $articles = Article::lastArticles(5);
         $count_categories  = Category::count();
         $count_articles  = Article::count();
-        return view('admin.new_app_admin', [
+        return view('admin.layouts.dashboard', [
             'categories' => $categories,
             'articles' => $articles,
             'count_categories' => $count_categories,

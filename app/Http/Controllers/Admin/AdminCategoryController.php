@@ -6,7 +6,7 @@ use App\Category;;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
-class CategoryController extends Controller
+class AdminCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -53,11 +53,11 @@ class CategoryController extends Controller
             Category::create($request->all());
             DB::commit();
             \session()->flash('success', 'Категория  успешно добавлена!');
-        }catch (\Exception $e){
+            }catch (\Exception $e){
             DB::rollBack();
             \session()->flash('error', 'Категория не добавлена!');
             return back()->withErrors($e->getMessage())->withInput();
-        }
+            }
         return redirect()->route('admin.category.index');
     }
 
@@ -97,19 +97,21 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         try{
+            DB::beginTransaction();
             $this->validate($request, [
                 'title' => 'required|string|min:4|max:20',
             ]);
 
-        $category->update($request->except('slug'));
+            $category->update($request->except('slug'));
+            DB::commit();
+            \session()->flash('success', 'Категория успешно отредактирована');
 
-        \session()->flash('success', 'Категория успешно отредактирована');
+            }catch (\Exception $e){
 
-        }catch (\Exception $e){
-
-        \session()->flash('error', $e->getMessage());
-        return back()->withInput();
-        }
+            DB::rollBack();
+            \session()->flash('error', $e->getMessage());
+            return back()->withInput();
+            }
         return redirect()->route('admin.category.index');
     }
 
