@@ -10,6 +10,7 @@ use Gate;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Session;
+
 class AdminArticleController extends Controller
 {
     /**
@@ -30,7 +31,7 @@ class AdminArticleController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-article'))
+        if(Gate::denies('create-article'))//
         {
             return redirect()->back()->with(['messge' => 'У Вас нет прав!']);
         }
@@ -64,7 +65,7 @@ class AdminArticleController extends Controller
             DB::rollBack();
             \session()->flash('error', 'Новость не добавлена!');
 
-            return back()->withInput();
+            return redirect()->back()->withInput();
         }
         return redirect()->route('admin.article.index');
     }
@@ -113,7 +114,7 @@ class AdminArticleController extends Controller
         }catch (\Exception $e)
         {
             \session()->flash('error', 'Ошибка редактирования');
-            return back()->withInput();
+            return back()->withInput($request->all());
         }
         return redirect()->route('admin.article.index');
 

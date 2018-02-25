@@ -56,7 +56,7 @@ class AdminCategoryController extends Controller
             }catch (\Exception $e){
             DB::rollBack();
             \session()->flash('error', 'Категория не добавлена!');
-            return back()->withErrors($e->getMessage())->withInput();
+            return redirect()->back()->withInput();
             }
         return redirect()->route('admin.category.index');
     }
@@ -110,7 +110,7 @@ class AdminCategoryController extends Controller
 
             DB::rollBack();
             \session()->flash('error', $e->getMessage());
-            return back()->withInput();
+            return redirect()->back()->withInput($request->only('title'));
             }
         return redirect()->route('admin.category.index');
     }
