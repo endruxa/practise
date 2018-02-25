@@ -33,7 +33,7 @@ class AdminArticleController extends Controller
     {
         if(Gate::denies('create-article'))//
         {
-            return redirect()->back()->with(['messge' => 'У Вас нет прав!']);
+            return redirect()->back()->with('error', 'У вас нет прав доступа!');
         }
         $categories = Category::with('children')->where('parent_id', 0)->get();
         return view('admin.articles.create', [

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\User;
+use Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -28,11 +29,11 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Gate::define('create-article', function (User $user)
         {
-            if($user = User::ROLE_ADMIN)
+            if($user->role == 2)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         });
 
         //

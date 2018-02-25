@@ -46,7 +46,7 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         try{
-            $request->validate([
+            $this->validate($request,[
                 'title' => 'required|string|min:4|max:20',
             ]);
             DB::beginTransaction();
