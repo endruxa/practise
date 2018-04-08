@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(App\User::class, 'users', function (Faker $faker)
+$factory->define(App\User::class, function (Faker $faker)
 {
     static $password;
     return [
@@ -37,7 +37,7 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
     ];
 });
 
-$factory->defineAs(App\Category::class, 'admin', function (Faker $faker)
+$factory->defineAs(App\Category::class, 'category', function (Faker $faker)
 {
     return [
      'title'     => $faker->title(),
@@ -46,7 +46,7 @@ $factory->defineAs(App\Category::class, 'admin', function (Faker $faker)
      ];
 });
 
-$factory->defineAs(App\Article::class, 'admin', function (Faker $faker)
+$factory->defineAs(App\Article::class, 'article', function (Faker $faker)
 {
     return [
      'title'             => $faker->title(),

@@ -28,7 +28,7 @@ class TestCommentsSeeder extends Seeder
                 'name'=>'Сергей',
                 'email'=>'ksl1980@mail.ru',
                 'text'=>'Текст WEB-программиста Сергея',
-                'created_at'=>'2017-07-02 14:36:33',
+                'created_at'=>\Carbon\Carbon::now()->format('d-m-Y H:i'),
                 $key_field => $key_id
             ]);
 
@@ -38,7 +38,7 @@ class TestCommentsSeeder extends Seeder
                 'name'=>'Даша',
                 'email'=>'dasha@mail.ru',
                 'text'=>'Текст Даши',
-                'created_at'=>'2017-07-08 19:58:15',
+                'created_at'=>\Carbon\Carbon::now()->format('d-m-Y H:i'),
                 $key_field => $key_id
             ]);
 
@@ -49,7 +49,7 @@ class TestCommentsSeeder extends Seeder
                 'email'=>'vasia@mail.ru',
                 'text'=>'Текст Васи',
                 'parent_id'=>'1',
-                'created_at'=>'2017-07-14 11:26:14',
+                'created_at'=>\Carbon\Carbon::now()->format('d-m-Y H:i'),
                 $key_field => $key_id
             ]);
     }
