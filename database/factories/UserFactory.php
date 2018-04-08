@@ -37,7 +37,7 @@ $factory->defineAs(App\User::class, 'admin', function (Faker $faker) {
     ];
 });
 
-$factory->defineAs(App\Category::class, 'category', function (Faker $faker)
+$factory->defineAs(App\Category::class, 'admin', function (Faker $faker)
 {
     return [
      'title'     => $faker->title(),
@@ -46,7 +46,7 @@ $factory->defineAs(App\Category::class, 'category', function (Faker $faker)
      ];
 });
 
-$factory->defineAs(App\Article::class, 'article', function (Faker $faker)
+$factory->defineAs(App\Article::class, 'admin', function (Faker $faker)
 {
     return [
      'title'             => $faker->title(),
@@ -56,7 +56,8 @@ $factory->defineAs(App\Article::class, 'article', function (Faker $faker)
      'description'       => $faker->realText(100),
      'meta_title'        => $faker->text(25),
      'meta_description'  => $faker->text(25),
-     'meta_keyword'      => $faker->text(25)
+     'meta_keyword'      => $faker->text(25),
+     'user_id'           => 1
      ];
 });
 
