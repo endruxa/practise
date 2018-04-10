@@ -6,10 +6,7 @@ use App\Article;
 use App\Category;
 use App\Http\Requests\ArticleRequestController;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use DB;
-use Illuminate\Session;
-use App\Http\Controllers\Admin\AdminUploadImages;
 class ArticleController extends Controller
 {
     /**
