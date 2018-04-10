@@ -115,8 +115,9 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Article  $article
+     * @param  \App\Article $article
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Article $article)
     {
