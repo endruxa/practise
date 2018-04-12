@@ -47,8 +47,8 @@ class ArticleController extends Controller
             $request['user_id'] = $request->user()->id;
             $article = Article::create($request->all());
             //Categories
-            if($request->input('categories')) : $article->categories()->attach(($request->input('categories')));
-            endif;
+            $article->categories()->sync($request->input('categories'));
+               // $article->categories()->attach(($request->input('categories')))
 
             DB::commit();
             \session()->flash('success', 'Новость успешно добавлена!');
@@ -97,10 +97,11 @@ class ArticleController extends Controller
         try{
             DB::beginTransaction();
             $article->update($request->except('slug'));
-            $article->categories()->detach();
+            $article->categories()->sync($request->input('categories'));
+            /*$article->categories()->detach();
             //Categories
-            if($request->input('categories')) : $article->categories()->attach($request->input('categories'));
-            endif;
+            if($request->input('categories')){
+                $article->categories()->attach($request->input('categories'))};*/
 
             DB::commit();
             \session()->flash('success', 'Новость успешно отредактирована!');
