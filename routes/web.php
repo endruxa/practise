@@ -12,7 +12,6 @@
 */
 
 Route::get('/', function () {
-    dd($_SERVER);
     return view('welcome');
 });
 Auth::routes();
